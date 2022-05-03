@@ -1,19 +1,22 @@
 <template>
   <div id="app">
-    <LoginPage />
-    <SignUp />
+    <!-- <LoginPage /> -->
+    <!-- <SignUp /> -->
+    <ProfileInfo />
   </div>
 </template>
 
 <script>
-import LoginPage from "./components/LoginPage.vue"
-import SignUp from "./components/SignUp.vue"
+// import LoginPage from "./components/LoginPage.vue"
+// import SignUp from "./components/SignUp.vue"
+import ProfileInfo from "./components/ProfileInfo.vue"
 
 export default {
   name: 'App',
   components: {
-    LoginPage,
-    SignUp
+    // LoginPage,
+    // SignUp,
+    ProfileInfo,
   }
 }
 </script>
@@ -23,8 +26,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
