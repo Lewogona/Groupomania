@@ -15,8 +15,8 @@
         </b-row>
         <b-row>
             <b-col class="my-3">
-                <b-button>Se connecter</b-button>
-                <p class="my-3">Déjà inscrit ? <b-link href="#">Inscrivez-vous ici !</b-link></p>
+                <b-button>S'inscrire</b-button>
+                <p class="my-3">Déjà inscrit ? <b-link href="#">Connectez-vous ici !</b-link></p>
             </b-col>
         </b-row>
     </b-container>
@@ -25,7 +25,7 @@
 <script>
 
 export default {
-    name: 'LoginPage',
+    name: 'SignUp',
     data() {
         return {
             email: "",
