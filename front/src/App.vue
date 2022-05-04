@@ -5,6 +5,7 @@
     <SignUp />
     <ProfileInfo />
     <PublishedPost />
+    <PublishedComment />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import SignUp from "./components/SignUp.vue"
 import ProfileInfo from "./components/ProfileInfo.vue"
 import HeaderForPages from "./components/HeaderForPages.vue"
 import PublishedPost from "./components/PublishedPost.vue"
+import PublishedComment from "./components/PublishedComment.vue"
 
 export default {
   name: 'App',
@@ -23,6 +25,7 @@ export default {
     ProfileInfo,
     HeaderForPages,
     PublishedPost,
+    PublishedComment,
   }
 }
 </script>

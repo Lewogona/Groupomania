@@ -31,7 +31,7 @@
                     <b-icon-keyboard></b-icon-keyboard> Commenter
                 </b-col>
                 <b-col cols="2">
-                    <b-button>Supprimer le post</b-button>
+                    <b-button size="sm"><b-icon-trash></b-icon-trash> Supprimer</b-button>
                 </b-col>
             </b-row>
         </template>
