@@ -4,6 +4,7 @@
     <LoginPage />
     <SignUp />
     <ProfileInfo />
+    <PublishedPost />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import LoginPage from "./components/LoginPage.vue"
 import SignUp from "./components/SignUp.vue"
 import ProfileInfo from "./components/ProfileInfo.vue"
 import HeaderForPages from "./components/HeaderForPages.vue"
+import PublishedPost from "./components/PublishedPost.vue"
 
 export default {
   name: 'App',
@@ -20,6 +22,7 @@ export default {
     SignUp,
     ProfileInfo,
     HeaderForPages,
+    PublishedPost,
   }
 }
 </script>

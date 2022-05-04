@@ -13,8 +13,8 @@
                     <template #button-content>
                         <b-icon-newspaper></b-icon-newspaper> Les posts
                     </template>
-                <b-dropdown-item href="#"><b-icon-eyeglasses></b-icon-eyeglasses> Voir les publications</b-dropdown-item>
-                <b-dropdown-item href="#"><b-icon-pencil-fill></b-icon-pencil-fill> Créer un nouveau post</b-dropdown-item>
+                <b-dropdown-item href="#"><b-icon-eyeglasses></b-icon-eyeglasses> Consulter les publications</b-dropdown-item>
+                <b-dropdown-item href="#"><b-icon-pencil-fill></b-icon-pencil-fill> Publier un nouveau post</b-dropdown-item>
                 </b-nav-item-dropdown>
 
                 <b-nav-item-dropdown right>
