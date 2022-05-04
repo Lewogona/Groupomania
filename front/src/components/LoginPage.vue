@@ -13,9 +13,9 @@
                 <b-form-input v-model="password" type="password" placeholder="Votre mot de passe"></b-form-input>
             </b-col>
         </b-row>
-        <b-row>
-            <b-col class="my-3">
-                <b-button>Se connecter</b-button>
+        <b-row class="justify-content-center text-center">
+            <b-col cols="4">
+                <b-button class="my-3">Se connecter</b-button>
                 <p class="my-3">Vous n'avez pas de compte ? <b-link href="#">Inscrivez-vous ici !</b-link></p>
             </b-col>
         </b-row>
