@@ -6,6 +6,7 @@
     <ProfileInfo />
     <PublishedPost />
     <PublishedComment />
+    <CreatePost />
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import ProfileInfo from "./components/ProfileInfo.vue"
 import HeaderForPages from "./components/HeaderForPages.vue"
 import PublishedPost from "./components/PublishedPost.vue"
 import PublishedComment from "./components/PublishedComment.vue"
+import CreatePost from "./components/CreatePost.vue"
 
 export default {
   name: 'App',
@@ -26,6 +28,7 @@ export default {
     HeaderForPages,
     PublishedPost,
     PublishedComment,
+    CreatePost,
   }
 }
 </script>
