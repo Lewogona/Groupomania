@@ -4,8 +4,8 @@
             <b-row no-gutters>
                 <b-col md="3">
                     <b-avatar rounded size="96px"></b-avatar>
-                    <b-card-text>Réponse de : lewogona@gmail.com</b-card-text>
-                    <b-card-text>Le : 04/05/2022</b-card-text>
+                    <b-card-text>Réponse de : {{ email }}</b-card-text>
+                    <b-card-text>Le : {{ date }}</b-card-text>
                 </b-col>
                 <b-col md="9">
                     <b-card-body>
@@ -30,9 +30,7 @@
 
 export default {
     name: 'HeaderForPages',
-    props: {
-    
-  }
+    props: ["email", "date"]
 }
 
 </script>

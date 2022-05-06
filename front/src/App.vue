@@ -3,11 +3,11 @@
     <HeaderForPages />
     <LoginPage />
     <SignUp />
-    <ProfileInfo />
-    <PublishedPost />
-    <PublishedComment />
-    <CreatePost />
-    <CreateComment />
+    <ProfileInfo email="lewogona@gmail.com" status="admin" />
+    <PublishedPost email="lewogona@gmail.com" date="04/05/2022"/>
+    <PublishedComment email="lewogona@gmail.com" date="04/05/2022"/>
+    <CreatePost email="lewogona@gmail.com" date="04/05/2022"/>
+    <CreateComment email="lewogona@gmail.com" date="04/05/2022"/>
   </div>
 </template>
 

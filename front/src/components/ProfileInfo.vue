@@ -6,8 +6,8 @@
             img-left 
             class="mb-3"
         >
-            <b-card-text>Email : lewogona@gmail.com</b-card-text>
-            <b-card-text>Statut : admin</b-card-text>
+            <b-card-text>Email : {{ email }}</b-card-text>
+            <b-card-text>Statut : {{ status }}</b-card-text>
             <b-button variant="danger">Supprimer le compte</b-button>
     </b-card>
 </template>
@@ -16,9 +16,7 @@
 
 export default {
     name: 'ProfileInfo',
-    props: {
-    
-  }
+    props: ["email", "status"]
 }
 
 </script>

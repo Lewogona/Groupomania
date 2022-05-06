@@ -8,8 +8,8 @@
             <b-row no-gutters>
                 <b-col md="3">
                     <b-card-img :src="require('../assets/pp.jpg')" img-alt="Profile Photo" ></b-card-img>
-                    <b-card-text>Posté par : lewogona@gmail.com</b-card-text>
-                    <b-card-text>Le : 04/05/2022</b-card-text>
+                    <b-card-text>Posté par : {{ email }}</b-card-text>
+                    <b-card-text>Le : {{ date }}</b-card-text>
                 </b-col>
                 <b-col md="9">
                     <b-card-body>
@@ -40,9 +40,7 @@
 
 export default {
     name: 'PublishedPost',
-    props: {
-    
-    }
+    props: ["email", "date"]
 }
 
 </script>
