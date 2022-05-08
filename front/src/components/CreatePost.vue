@@ -27,7 +27,7 @@
             <template #footer>
                 <b-row align-h="end">
                     <b-col cols="2">
-                        <b-button size="sm"><b-icon-trash></b-icon-trash> Supprimer</b-button>
+                        <b-button size="sm" href="#/"><b-icon-trash></b-icon-trash> Annuler</b-button>
                     </b-col>
                 </b-row>
             </template>
@@ -40,7 +40,10 @@
 
 export default {
     name: 'PublishedPost',
-    props: ["email", "date"]
+    props: {
+        email: String,
+        date: String
+    }
 }
 
 </script>

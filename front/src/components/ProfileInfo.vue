@@ -16,7 +16,10 @@
 
 export default {
     name: 'ProfileInfo',
-    props: ["email", "status"]
+    props: {
+        email: String,
+        status: String
+    }
 }
 
 </script>

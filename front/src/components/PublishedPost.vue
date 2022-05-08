@@ -2,7 +2,7 @@
 <b-container>
     <b-card header-tag="header" footer-tag="footer">
         <template #header>
-            <h6 class="mb-0">Titre de la publication</h6>
+            <h6 class="mb-0">{{ titre }}</h6>
         </template>
         <b-row no-gutters>
             <b-col md="3">
@@ -13,11 +13,7 @@
             <b-col md="9">
                 <b-card-body>
                     <b-card-text>
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-                        culpa qui officia deserunt mollit anim id est laborum."
+                        {{ post }}
                     </b-card-text>
                 </b-card-body>
             </b-col>
@@ -25,7 +21,7 @@
         <template #footer>
             <b-row align-h="between">
                 <b-col cols="2">
-                    <b-icon-hand-thumbs-up></b-icon-hand-thumbs-up> Like
+                    <b-icon-hand-thumbs-up></b-icon-hand-thumbs-up> {{ likes }}
                 </b-col>
                 <b-col cols="2">
                     <b-icon-keyboard></b-icon-keyboard> Commenter
@@ -43,7 +39,13 @@
 
 export default {
     name: 'PublishedPost',
-    props: ["email", "date"]
+    props: {
+        email: String,
+        date: String,
+        titre: String,
+        post: String,
+        likes: Number
+    }
 }
 
 </script>

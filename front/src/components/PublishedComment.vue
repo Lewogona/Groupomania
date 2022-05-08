@@ -11,9 +11,7 @@
                     <b-card-body>
                         <b-row>
                             <b-card-text>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                                aliquip ex ea commodo consequat."
+                                {{ comment }}
                             </b-card-text>
                         </b-row>
                         <b-row align-h="end">
@@ -29,8 +27,12 @@
 <script>
 
 export default {
-    name: 'HeaderForPages',
-    props: ["email", "date"]
+    name: "PublishedComment",
+    props: {
+        email: String,
+        date: String,
+        comment: String
+    }
 }
 
 </script>

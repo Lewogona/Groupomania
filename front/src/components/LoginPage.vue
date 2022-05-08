@@ -15,8 +15,8 @@
         </b-row>
         <b-row class="justify-content-center text-center">
             <b-col cols="4">
-                <b-button class="my-3">Se connecter</b-button>
-                <p class="my-3">Vous n'avez pas de compte ? <b-link href="#">Inscrivez-vous ici !</b-link></p>
+                <b-button class="my-3" href="#/">Se connecter</b-button>
+                <p class="my-3">Vous n'avez pas de compte ? <b-link href="#/signup">Inscrivez-vous ici !</b-link></p>
             </b-col>
         </b-row>
     </b-container>

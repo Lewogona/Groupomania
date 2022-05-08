@@ -1,7 +1,7 @@
 <template> 
     <b-container>
         <b-navbar toggleable="lg" >
-            <b-navbar-brand class="icon" href="#">
+            <b-navbar-brand class="icon" href="#/">
                 <img :src="require('../assets/icon-left-font.png')" alt="Logo de Groupomania">
             </b-navbar-brand>
 
@@ -13,16 +13,16 @@
                     <template #button-content>
                         <b-icon-newspaper></b-icon-newspaper> Les posts
                     </template>
-                <b-dropdown-item href="#"><b-icon-eyeglasses></b-icon-eyeglasses> Consulter les publications</b-dropdown-item>
-                <b-dropdown-item href="#"><b-icon-pencil-fill></b-icon-pencil-fill> Publier un nouveau post</b-dropdown-item>
+                <b-dropdown-item href="#/allposts"><b-icon-eyeglasses></b-icon-eyeglasses> Consulter les publications</b-dropdown-item>
+                <b-dropdown-item href="#/newpost"><b-icon-pencil-fill></b-icon-pencil-fill> Publier un nouveau post</b-dropdown-item>
                 </b-nav-item-dropdown>
 
                 <b-nav-item-dropdown right>
                     <template #button-content>
                         <b-icon-person-lines-fill></b-icon-person-lines-fill> Mon compte
                     </template>
-                <b-dropdown-item href="#"><b-icon-person-square></b-icon-person-square> Profil</b-dropdown-item>
-                <b-dropdown-item href="#"><b-icon-power></b-icon-power> Déconnexion</b-dropdown-item>
+                <b-dropdown-item href="#/profile"><b-icon-person-square></b-icon-person-square> Profil</b-dropdown-item>
+                <b-dropdown-item href="#/login"><b-icon-power></b-icon-power> Déconnexion</b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
             </b-collapse>
