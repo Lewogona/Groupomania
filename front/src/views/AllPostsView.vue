@@ -1,11 +1,12 @@
 <template>
     <div>
-        <PublishedPost v-for="{email, date, titre, post, likes} in publishedPosts" 
+        <PublishedPost commentButton="Voir les commentaires"
+        v-for="{email, date, titre, post, likes} in publishedPosts" 
         :email="email" 
         :date="date" 
         :titre="titre" 
         :post="post" 
-        :likes="likes" 
+        :likes="likes"
         :key="post"/>
     </div>
 </template>

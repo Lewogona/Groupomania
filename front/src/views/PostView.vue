@@ -10,7 +10,8 @@
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
             culpa qui officia deserunt mollit anim id est laborum." 
             :likes="5"
-            :displayCreateComment="displayCreateComment"/>
+            :displayCreateComment="displayCreateComment"
+            commentButton="Commenter"/>
         <CreateComment v-if="showCreateComment" email="lewogona@gmail.com" date="07/05/2022"/>
         <PublishedComment v-for="{date, email, comment} in publishedComments" :date="date" :email="email" :comment="comment" :key="comment"/>
     </div>

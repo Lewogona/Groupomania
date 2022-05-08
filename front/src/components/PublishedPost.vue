@@ -20,15 +20,11 @@
         </b-row>
         <template #footer>
             <b-row align-h="between">
-                <b-col cols="2">
+                <div>
                     <b-icon-hand-thumbs-up></b-icon-hand-thumbs-up> {{ likes }}
-                </b-col>
-                <b-col cols="2">
-                    <b-button size="sm" v-if="showButton" @click="displayCreateComment"><b-icon-keyboard></b-icon-keyboard> Commenter</b-button>
-                </b-col>
-                <b-col cols="2">
+                </div>
+                    <b-button size="sm" href="#/post" @click="displayCreateComment"><b-icon-keyboard></b-icon-keyboard> {{ commentButton }}</b-button>
                     <b-button size="sm"><b-icon-trash></b-icon-trash> Supprimer</b-button>
-                </b-col>
             </b-row>
         </template>
     </b-card>
@@ -45,13 +41,14 @@ export default {
         titre: String,
         post: String,
         likes: Number,
-        displayCreateComment: Function
+        displayCreateComment: Function,
+        commentButton: String
     },
-    computed: {
-        showButton(){
-            return !(this.$route.path === "/allposts")
-        }
-    }
+    // computed: {
+    //     showButton(){
+    //         return !(this.$route.path === "/allposts")
+    //     }
+    // }
 }
 
 </script>
