@@ -26,7 +26,7 @@
             </b-row>
             <template #footer>
                 <b-row align-h="end">
-                        <b-button size="sm" href="#/" variant="success" class="mr-3"><b-icon-check></b-icon-check> Valider</b-button>
+                        <b-button size="sm" href="#/allposts" variant="success" class="mr-3"><b-icon-check></b-icon-check> Valider</b-button>
                         <b-button size="sm" href="#/allposts" variant="danger" class="mr-3"><b-icon-trash></b-icon-trash> Annuler</b-button>
                 </b-row>
             </template>
