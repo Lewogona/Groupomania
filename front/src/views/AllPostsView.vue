@@ -41,10 +41,10 @@ export default {
         ]
     }),
 
-name: "AllPostsView",
-components: {
-    PublishedPost
-}
+    name: "AllPostsView",
+    components: {
+        PublishedPost
+    }
 
 }
 

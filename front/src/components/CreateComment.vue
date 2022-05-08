@@ -31,7 +31,10 @@
 
 export default {
     name: 'HeaderForPages',
-    props: ["email", "date"]
+    props: {
+        email: String,
+        date: String
+    }
 }
 
 </script>

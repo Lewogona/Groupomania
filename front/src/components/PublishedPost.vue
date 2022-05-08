@@ -24,7 +24,7 @@
                     <b-icon-hand-thumbs-up></b-icon-hand-thumbs-up> {{ likes }}
                 </b-col>
                 <b-col cols="2">
-                    <b-icon-keyboard></b-icon-keyboard> Commenter
+                    <b-button size="sm" v-if="showButton" @click="displayCreateComment"><b-icon-keyboard></b-icon-keyboard> Commenter</b-button>
                 </b-col>
                 <b-col cols="2">
                     <b-button size="sm"><b-icon-trash></b-icon-trash> Supprimer</b-button>
@@ -44,7 +44,13 @@ export default {
         date: String,
         titre: String,
         post: String,
-        likes: Number
+        likes: Number,
+        displayCreateComment: Function
+    },
+    computed: {
+        showButton(){
+            return !(this.$route.path === "/allposts")
+        }
     }
 }
 
