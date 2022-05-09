@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import axios from "axios"
 
 export default {
     name: 'LoginPage',
@@ -32,9 +33,9 @@ export default {
             password: "",
         }
     },
-  props: {
-    
-  }
+    mounted() {
+        axios.get('https://api.coindesk.com/v1/bpi/currentprice.json').then(response => console.log(response))
+    }
 }
 
 </script>
