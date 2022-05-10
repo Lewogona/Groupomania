@@ -5,6 +5,8 @@ import PostView from "../views/PostView.vue"
 import ProfileView from "../views/ProfileView.vue"
 import CreatePostView from "../views/CreatePostView.vue"
 import AllPostsView from "../views/AllPostsView.vue"
+import LoginPage from "../views/LoginPage.vue"
+import SignUp from "../views/SignUp.vue"
 
 Vue.use(VueRouter)
 
@@ -12,12 +14,12 @@ const routes = [
     {
         path: "/login",
         name: "login",
-        component: () => import("../components/LoginPage.vue")
+        component: LoginPage
     },
     {
         path: "/signup",
         name: "signup",
-        component: () => import("../components/SignUp.vue")
+        component: SignUp
     },
     {
         path: "/",
