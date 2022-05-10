@@ -15,7 +15,7 @@
         </b-row>
         <b-row class="justify-content-center text-center">
             <b-col cols="4">
-                <b-button class="my-3" href="#/">Se connecter</b-button>
+                <b-button class="my-3" @click="login">Se connecter</b-button>
                 <p class="my-3">Vous n'avez pas de compte ? <b-link href="#/signup">Inscrivez-vous ici !</b-link></p>
             </b-col>
         </b-row>
@@ -33,8 +33,18 @@ export default {
             password: "",
         }
     },
-    mounted() {
-        axios.get('https://api.coindesk.com/v1/bpi/currentprice.json').then(response => console.log(response))
+    methods: {
+        async login() {
+            try {
+                const response = await axios.post("http://localhost:3000/users/login", {
+                    email: this.email,
+                    password: this.password
+            })
+                console.log(response)
+            } catch (e) {
+                console.log(e)
+            }
+        }
     }
 }
 

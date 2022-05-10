@@ -23,17 +23,22 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const user = await User.findOne({ where : {email : req.body.email }});
+    let user = null;
+    try {
+        user = await User.findOne({ where : {email : req.body.email }});
+    } catch (e) {
+        console.error(e)
+    }
     if(user){
         const password_valid = await bcrypt.compare(req.body.password,user.password);
         if(password_valid){
-            token = jwt.sign({ "id" : user.id,"email" : user.email,"first_name":user.first_name },process.env.SECRET);
+            token = jwt.sign({ "id" : user.id,"email" : user.email },process.env.SECRET);
             res.status(200).json({ token : token });
         } else {
             res.status(400).json({ error : "Mot de passe incorrect" });
         }
      
-    }else{
+    } else{
        res.status(404).json({ error : "Utilisateur inexistant" });
     }
      
