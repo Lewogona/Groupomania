@@ -1,5 +1,5 @@
 <template>
-    <ProfileInfo email="lewogona@gmail.com" status="admin"/>
+    <ProfileInfo email="lewogona@gmail.com" status="admin" firstName="Lewo" lastName="TRAN PHAT"/>
 </template>
 
 <script>

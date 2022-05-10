@@ -13,10 +13,11 @@ router.post('/signup', async (req, res) => {
     console.log(req.body)
     const salt = await bcrypt.genSalt(10);
     let usr = {
-        firstName : req.body.firstName,
-        lastName : req.body.lastName,
-        email : req.body.email,
-        password : await bcrypt.hash(req.body.password, salt)
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: await bcrypt.hash(req.body.password, salt),
+        isAdmin: false
     };
     created_user = await User.create(usr);
     res.status(201).json(created_user);

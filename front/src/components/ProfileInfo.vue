@@ -6,6 +6,8 @@
             img-left 
             class="mb-3"
         >
+            <b-card-text>Prénom : {{ firstName }}</b-card-text>
+            <b-card-text>Nom : {{ lastName }}</b-card-text>
             <b-card-text>Email : {{ email }}</b-card-text>
             <b-card-text>Statut : {{ status }}</b-card-text>
             <b-button variant="danger">Supprimer le compte</b-button>
@@ -17,6 +19,8 @@
 export default {
     name: 'ProfileInfo',
     props: {
+        firstName: String,
+        lastName: String,
         email: String,
         status: String
     }
