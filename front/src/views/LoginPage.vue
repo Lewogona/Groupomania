@@ -69,7 +69,6 @@ export default {
                     return;
                 }
                 if (this.user.email && this.user.password) {
-                    console.log(this.user)
                     this.$store.dispatch('auth/login', this.user).then(
                         () => {
                             this.$router.push('/');

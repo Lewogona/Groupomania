@@ -22,7 +22,7 @@
                         <b-icon-person-lines-fill></b-icon-person-lines-fill> Mon compte
                     </template>
                 <b-dropdown-item href="#/profile"><b-icon-person-square></b-icon-person-square> Profil</b-dropdown-item>
-                <b-dropdown-item href="#/login"><b-icon-power></b-icon-power> Déconnexion</b-dropdown-item>
+                <b-dropdown-item @click="logOut"><b-icon-power></b-icon-power> Déconnexion</b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
             </b-collapse>
@@ -34,9 +34,12 @@
 
 export default {
     name: 'HeaderForPages',
-    props: {
-    
-  }
+    methods: {
+        logOut() {
+            this.$store.dispatch('auth/logout');
+            this.$router.push('/login');
+        }
+    }
 }
 
 </script>

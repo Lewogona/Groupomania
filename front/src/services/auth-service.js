@@ -9,8 +9,9 @@ class AuthService {
             password: user.password
         })
         .then(response => {
-            if (response.data.accessToken) {
-            localStorage.setItem('user', JSON.stringify(response.data));
+            if (response.data.token) {
+                console.log(response.data)
+                localStorage.setItem('user', JSON.stringify(response.data));
             }
             return response.data;
         });
@@ -20,10 +21,10 @@ class AuthService {
     }
     register(user) {
         return axios.post(API_URL + 'signup', {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        password: user.password
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            password: user.password
         });
     }
 }

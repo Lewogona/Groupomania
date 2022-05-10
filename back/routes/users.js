@@ -19,7 +19,7 @@ router.post('/signup', async (req, res) => {
         password: await bcrypt.hash(req.body.password, salt),
         isAdmin: false
     };
-    created_user = await User.create(usr);
+    const created_user = await User.create(usr);
     res.status(201).json(created_user);
 });
 
@@ -34,7 +34,8 @@ router.post('/login', async (req, res) => {
         const password_valid = await bcrypt.compare(req.body.password,user.password);
         if(password_valid){
             token = jwt.sign({ "id" : user.id,"email" : user.email },process.env.SECRET);
-            res.status(200).json({ token : token });
+            console.log(user.email);
+            res.status(200).json({ token, ...user.dataValues });
         } else {
             res.status(400).json({ error : "Mot de passe incorrect" });
         }

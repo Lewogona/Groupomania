@@ -6,10 +6,11 @@
             img-left 
             class="mb-3"
         >
-            <b-card-text>Prénom : {{ currentUser.firstName }}</b-card-text>
-            <b-card-text>Nom : {{ currentUser.lastName }}</b-card-text>
-            <b-card-text>Email : {{ currentUser.email }}</b-card-text>
-            <b-card-text>Statut : {{ currentUser.status }}</b-card-text>
+            <b-card-text>Prénom : {{ firstName }}</b-card-text>
+            <b-card-text>Nom : {{ lastName }}</b-card-text>
+            <b-card-text>Email : {{ email }}</b-card-text>
+            <b-card-text v-if="isAdmin">Statut : Admin </b-card-text>
+            <b-card-text v-else>Statut : Employé(e) </b-card-text>
             <b-button variant="danger">Supprimer le compte</b-button>
     </b-card>
 </template>
@@ -22,7 +23,7 @@ export default {
         firstName: String,
         lastName: String,
         email: String,
-        status: String
+        isAdmin: Boolean
     }
 }
 

@@ -50,31 +50,31 @@ export default {
     },
     mounted() {
         if (this.loggedIn) {
-        this.$router.push('/');
+            this.$router.push('/');
         }
     },
     methods: {
         handleRegister() {
-        this.message = '';
-        this.submitted = true;
-        this.$validator.validate().then(isValid => {
-            if (isValid) {
-            this.$store.dispatch('auth/register', this.user).then(
-                data => {
-                    this.message = data.message;
-                    this.successful = true;
-                    this.$router.push('/');
-                },
-                error => {
-                    this.message =
-                        (error.response && error.response.data) ||
-                        error.message ||
-                        error.toString();
-                    this.successful = false;
+            this.message = '';
+            this.submitted = true;
+            this.$validator.validate().then(isValid => {
+                if (isValid) {
+                    this.$store.dispatch('auth/register', this.user).then(
+                        data => {
+                            this.message = data.message;
+                            this.successful = true;
+                            this.$router.push('/login');
+                        },
+                        error => {
+                            this.message =
+                                (error.response && error.response.data) ||
+                                error.message ||
+                                error.toString();
+                            this.successful = false;
+                        }
+                    );
                 }
-            );
-            }
-        });
+            });
         }
     }
 }
