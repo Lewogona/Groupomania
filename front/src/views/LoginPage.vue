@@ -6,9 +6,9 @@
             </b-col>
         </b-row>
         <b-row class="justify-content-center">
-            <b-col cols="6" align-self="center">
+            <b-col cols="6" class="text-center">
                 <b-form @submit.prevent="handleLogin">
-                    <b-form-group label="Votre adresse mail" label-for="input-1">
+                    <b-form-group label="Votre adresse mail" label-for="input-1" class="text-left">
                         <b-form-input id="input-1" v-model="user.email" type="email" required></b-form-input>
                     </b-form-group>
                     <div
@@ -16,7 +16,7 @@
                         class="alert alert-danger"
                         role="alert"
                         >Champ vide</div>
-                    <b-form-group label="Votre mot de passe" label-for="input-2">
+                    <b-form-group label="Votre mot de passe" label-for="input-2" class="text-left">
                         <b-form-input id="input-2" v-model="user.password" type="password" required></b-form-input>
                     </b-form-group>
                     <div

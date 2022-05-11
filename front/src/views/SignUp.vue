@@ -6,18 +6,18 @@
             </b-col>
         </b-row>
         <b-row class="justify-content-center">
-            <b-col cols="6">
+            <b-col cols="6" class="text-center">
                 <b-form @submit.prevent="handleRegister">
-                    <b-form-group label="Adresse email" label-for="input-1">
+                    <b-form-group label="Adresse email" label-for="input-1" class="text-left">
                         <b-form-input id="input-1" v-model="user.email" type="email" required></b-form-input>
                     </b-form-group>
-                    <b-form-group label="Prénom" label-for="input-2">
+                    <b-form-group label="Prénom" label-for="input-2" class="text-left">
                         <b-form-input id="input-2" v-model="user.firstName" type="text" required></b-form-input>
                     </b-form-group>
-                    <b-form-group label="Nom" label-for="input-3">
+                    <b-form-group label="Nom" label-for="input-3" class="text-left">
                         <b-form-input id="input-3" v-model="user.lastName" type="text" required></b-form-input>
                     </b-form-group>
-                    <b-form-group label="Mot de passe" label-for="input-4">
+                    <b-form-group label="Mot de passe" label-for="input-4" class="text-left">
                         <b-form-input id="input-4" v-model="user.password" type="password" required></b-form-input>
                     </b-form-group>
                     <b-button class="my-3" type="submit">S'inscrire</b-button>
