@@ -1,9 +1,9 @@
 <template> 
 <b-container>
-    <b-form @submit="onSubmit" @reset="onReset">
+    <b-form @submit.prevent="sendPost">
         <b-card header-tag="header" footer-tag="footer">
             <template #header>
-                <b-form-input type="text" placeholder="Titre de la publication"></b-form-input>
+                <b-form-input type="text" v-model="title" placeholder="Titre de la publication"></b-form-input>
             </template>
             <b-row no-gutters>
                 <b-col md="3">
@@ -16,7 +16,7 @@
                         <b-card-text>
                             <b-form-textarea
                                 id="textarea"
-                                v-model="text"
+                                v-model="content"
                                 placeholder="Écrivez votre texte..."
                                 rows="12"
                             ></b-form-textarea>
@@ -26,7 +26,7 @@
             </b-row>
             <template #footer>
                 <b-row align-h="end">
-                        <b-button size="sm" href="#/allposts" variant="success" class="mr-3"><b-icon-check></b-icon-check> Valider</b-button>
+                        <b-button size="sm" type="submit" variant="success" class="mr-3"><b-icon-check></b-icon-check> Valider</b-button>
                         <b-button size="sm" href="#/allposts" variant="danger" class="mr-3"><b-icon-trash></b-icon-trash> Annuler</b-button>
                 </b-row>
             </template>
@@ -36,12 +36,35 @@
 </template>
 
 <script>
+import axios from "axios"
+import authHeader from '../services/auth-header'
+
+const API_URL = 'http://localhost:3000/posts';
 
 export default {
     name: 'PublishedPost',
+    data() {
+        return {
+            title: "",
+            content: "",
+        }
+    },
     props: {
         email: String,
         date: String
+    },
+    methods: {
+        async sendPost() {
+            const date = new Date();
+            const res = await axios.post(API_URL, {
+                title: this.title,
+                content: this.content,
+                date
+            }, {
+                headers: authHeader()
+            });
+            console.log(res)
+        }
     }
 }
 
