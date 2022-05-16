@@ -9,7 +9,6 @@ exports.createPost = async (req, res) => {
         date: req.body.date,
         userId: req.auth.userId
     };
-    console.log("req.auth", req.auth)
     const createPost = await Post.create(post);
     res.status(201).json(createPost);
 }
@@ -26,6 +25,5 @@ exports.getOnePost = async (req, res) => {
         where: { id: req.params.id },
         include: User
     });
-    console.log(post);
     res.status(200).json(post);
 }

@@ -11,7 +11,7 @@
                     <b-card-body>
                         <b-row>
                             <b-card-text>
-                                {{ comment }}
+                                {{ content }}
                             </b-card-text>
                         </b-row>
                         <b-row align-h="end">
@@ -31,7 +31,7 @@ export default {
     props: {
         email: String,
         date: String,
-        comment: String
+        content: String
     }
 }
 

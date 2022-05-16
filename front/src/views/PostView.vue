@@ -11,11 +11,11 @@
             />
         <CreateComment v-if="showCreateComment" email="lewogona@gmail.com" date="07/05/2022"/>
         <PublishedComment 
-            v-for="publishedComment in publishedComments" 
-            :date="publishedComment.date" 
-            :email="publishedComment.email" 
-            :comment="publishedComment.comment" 
-            :key="publishedComment.comment"/>
+            v-for="comment in comments" 
+            :date="comment.date" 
+            :email="comment.User.email"
+            :content="comment.content" 
+            :key="comment.comment"/>
     </div>
 </template>
 
@@ -28,7 +28,8 @@ import CreateComment from "@/components/CreateComment.vue"
 
 import { getReadableDate } from '../services/date-service'
 
-const API_URL = 'http://localhost:3000/posts/';
+const API_URL_post = 'http://localhost:3000/posts/';
+const API_URL_comment = "http://localhost:3000/comments/";
 
 
 export default {
@@ -36,9 +37,10 @@ export default {
         return {
             showCreateComment: false,
             post: {},
+            comments: []
         }
     },
-    name: 'PublishedCommentView',
+    name: 'PostView',
     components: {
         PublishedPost,
         PublishedComment,
@@ -50,13 +52,22 @@ export default {
         }
     },
     created() {
-        axios.get(API_URL + this.$route.params.id)
+        axios.get(API_URL_post + this.$route.params.id)
             .then(response => {
                 this.post = response.data;
                 this.post.date = getReadableDate(this.post.date)
             }).catch(e => {
                 console.error(e);
             })
+        axios.get(API_URL_comment + "post/" + this.$route.params.id)
+            .then(response => {
+                this.comments.push(...response.data.map(comment => {
+                    comment.date = getReadableDate(comment.date);
+                    return comment
+                }))
+            }).catch(e => {
+                console.error(e);
+            });
     }
 }
 

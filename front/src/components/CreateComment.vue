@@ -35,7 +35,7 @@
 import axios from "axios"
 import authHeader from '../services/auth-header'
 
-const API_URL = 'http://localhost:3000/comments';
+const API_URL = 'http://localhost:3000/comments/';
 
 export default {
     name: 'HeaderForPages',
@@ -46,7 +46,7 @@ export default {
     methods: {
     async sendComment() {
         const date = new Date();
-        const res = await axios.post(API_URL, {
+        const res = await axios.post(API_URL + "post/" + this.$route.params.id, {
             content: this.content,
             date
         }, {
