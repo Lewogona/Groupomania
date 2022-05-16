@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="post.id">
         <PublishedPost commentButton="Commenter"
             :date="post.date"
             :email="post.User.email"
@@ -9,7 +9,7 @@
             :id="post.id"
             :displayCreateComment="displayCreateComment"
             />
-        <CreateComment v-if="showCreateComment" email="lewogona@gmail.com" date="07/05/2022"/>
+        <CreateComment v-if="showCreateComment" :email="currentUser.email" date="Aujourd'hui"/>
         <PublishedComment 
             v-for="comment in comments" 
             :date="comment.date" 
@@ -68,23 +68,11 @@ export default {
             }).catch(e => {
                 console.error(e);
             });
+    },
+    computed: {
+        currentUser() {
+            return this.$store.state.auth.user;
+        }
     }
 }
-
-        // publishedComments: [
-        //     {
-        //         date: "04/05/2022",
-        //         email: "lewogona@gmail.com",
-        //         comment: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-        //             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-        //             nisi ut aliquip ex ea commodo consequat.`
-        //     },
-        //     {
-        //         date: "05/05/2022",
-        //         email: "keysim.fr@gmail.com",
-        //         comment: `Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-        //         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
-        //         id est laborum.`
-        //     }
-        // ]
 </script>
