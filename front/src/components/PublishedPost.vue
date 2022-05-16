@@ -2,7 +2,7 @@
 <b-container>
     <b-card header-tag="header" footer-tag="footer">
         <template #header>
-            <h6 class="mb-0">{{ titre }}</h6>
+            <h6 class="mb-0">{{ title }}</h6>
         </template>
         <b-row no-gutters>
             <b-col md="3">
@@ -13,7 +13,7 @@
             <b-col md="9">
                 <b-card-body>
                     <b-card-text>
-                        {{ post }}
+                        {{ content }}
                     </b-card-text>
                 </b-card-body>
             </b-col>
@@ -38,8 +38,8 @@ export default {
     props: {
         email: String,
         date: String,
-        titre: String,
-        post: String,
+        title: String,
+        content: String,
         likes: Number,
         displayCreateComment: Function,
         commentButton: String
