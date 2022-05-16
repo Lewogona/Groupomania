@@ -1,5 +1,5 @@
 <template>
-    <CreatePost email="lewogona@gmail.com" date="05/05/2022"/>
+    <CreatePost :email="currentUser.email" date="Aujourd'hui"/>
 </template>
 
 <script>
@@ -10,6 +10,11 @@ export default {
     name: 'CreatePostView',
     components: {
         CreatePost
+    },
+    computed: {
+        currentUser() {
+            return this.$store.state.auth.user;
+        }
     }
 }
 </script>
