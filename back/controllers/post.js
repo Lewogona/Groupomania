@@ -20,3 +20,12 @@ exports.getAllPosts = async (req, res) => {
     });
     res.status(200).json(posts);
 }
+
+exports.getOnePost = async (req, res) => {
+    const post = await Post.findOne({
+        where: { id: req.params.id },
+        include: User
+    });
+    console.log(post);
+    res.status(200).json(post);
+}

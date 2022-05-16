@@ -32,7 +32,7 @@ const routes = [
         component: ProfileView
     },
     {
-        path: "/post",
+        path: "/post/:id",
         name: "post",
         component: PostView
     },

@@ -23,7 +23,8 @@
                 <div>
                     <b-icon-hand-thumbs-up></b-icon-hand-thumbs-up> {{ likes }}
                 </div>
-                    <b-button size="sm" href="#/post" @click="displayCreateComment"><b-icon-keyboard></b-icon-keyboard> {{ commentButton }}</b-button>
+                    <b-button size="sm" v-if="displayPostButton" @click="displayPost"><b-icon-keyboard></b-icon-keyboard> {{ commentButton }}</b-button>
+                    <b-button size="sm" v-else @click="displayCreateComment"><b-icon-keyboard></b-icon-keyboard> {{ commentButton }}</b-button>
                     <b-button size="sm"><b-icon-trash></b-icon-trash> Supprimer</b-button>
             </b-row>
         </template>
@@ -42,13 +43,19 @@ export default {
         content: String,
         likes: Number,
         displayCreateComment: Function,
-        commentButton: String
+        commentButton: String,
+        id: Number
     },
-    // computed: {
-    //     showButton(){
-    //         return !(this.$route.path === "/allposts")
-    //     }
-    // }
+    computed: {
+        displayPostButton() {
+            return this.$router.currentRoute.path === "/allposts"
+        }
+    },
+    methods: {
+        displayPost() {
+            this.$router.push(`/post/${this.id}`)
+        }
+    }
 }
 
 </script>
