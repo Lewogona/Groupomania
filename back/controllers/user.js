@@ -4,7 +4,6 @@ require('dotenv').config()
 
 const db = require("../models");
 const User = db.users;
-const Post = db.posts;
 
 exports.signup = async (req, res) => {
     const salt = await bcrypt.genSalt(10);

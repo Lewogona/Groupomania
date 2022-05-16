@@ -9,17 +9,20 @@
                 </b-col>
                 <b-col md="9">
                     <b-card-body>
-                        <b-row>
-                            <b-form-textarea
-                                id="textarea"
-                                v-model="text"
-                                placeholder="Écrivez votre texte..."
-                                rows="4"
-                            ></b-form-textarea>
-                        </b-row>
-                        <b-row align-h="end">
-                            <b-button size="sm"><b-icon-trash></b-icon-trash> Supprimer</b-button>
-                        </b-row>
+                        <b-form @submit.prevent="sendComment">
+                            <b-row>
+                                <b-form-textarea
+                                    id="textarea"
+                                    v-model="content"
+                                    placeholder="Écrivez votre texte..."
+                                    rows="4"
+                                ></b-form-textarea>
+                            </b-row>
+                            <b-row align-h="end">
+                                <b-button size="sm" type="submit" variant="success" class="mr-3"><b-icon-check></b-icon-check> Valider</b-button>
+                                <b-button size="sm" href="#/allposts" variant="danger" class="mr-3"><b-icon-trash></b-icon-trash> Annuler</b-button>
+                            </b-row>
+                        </b-form>
                     </b-card-body>
                 </b-col>
             </b-row>
@@ -29,12 +32,29 @@
 
 <script>
 
+import axios from "axios"
+import authHeader from '../services/auth-header'
+
+const API_URL = 'http://localhost:3000/comments';
+
 export default {
     name: 'HeaderForPages',
     props: {
         email: String,
         date: String
+    },
+    methods: {
+    async sendComment() {
+        const date = new Date();
+        const res = await axios.post(API_URL, {
+            content: this.content,
+            date
+        }, {
+            headers: authHeader()
+        });
+        console.log(res)
     }
+}
 }
 
 </script>
