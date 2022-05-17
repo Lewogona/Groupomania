@@ -56,10 +56,10 @@ export default {
             return this.$store.state.auth.status.loggedIn;
         }
     },
-        created() {
-            if (this.loggedIn) {
-            this.$router.push('/');
-        }
+    created() {
+        // if (this.loggedIn) {
+        //      this.$router.push('/');
+        // }
     },
     methods: {
         handleLogin() {

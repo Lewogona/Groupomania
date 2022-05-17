@@ -13,12 +13,11 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from "../services/axios-service"
 
 import PublishedPost from "@/components/PublishedPost.vue"
 import {getReadableDate} from "../services/date-service"
 
-const API_URL = 'http://localhost:3000/posts/';
 
 export default {
 
@@ -32,7 +31,7 @@ export default {
         PublishedPost
     },
     created() {
-        axios.get(API_URL)
+        axios.get("posts")
             .then(response => {
                 this.posts.push(...response.data.map(post => {
                     post.date = getReadableDate(post.date);

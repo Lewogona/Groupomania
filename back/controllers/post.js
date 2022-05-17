@@ -17,6 +17,7 @@ exports.getAllPosts = async (req, res) => {
     const posts = await Post.findAll({
         include: User
     });
+    console.log("Hello")
     res.status(200).json(posts);
 }
 

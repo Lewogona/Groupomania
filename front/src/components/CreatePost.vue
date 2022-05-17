@@ -36,10 +36,7 @@
 </template>
 
 <script>
-import axios from "axios"
-import authHeader from '../services/auth-header'
-
-const API_URL = 'http://localhost:3000/posts';
+import axios from "../services/axios-service"
 
 export default {
     name: 'PublishedPost',
@@ -56,12 +53,10 @@ export default {
     methods: {
         async sendPost() {
             const date = new Date();
-            const res = await axios.post(API_URL, {
+            const res = await axios.post("posts", {
                 title: this.title,
                 content: this.content,
                 date
-            }, {
-                headers: authHeader()
             });
             console.log(res)
         }

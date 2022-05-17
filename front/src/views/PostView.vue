@@ -20,17 +20,13 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from "../services/axios-service"
 
 import PublishedPost from "@/components/PublishedPost.vue"
 import PublishedComment from '@/components/PublishedComment.vue'
 import CreateComment from "@/components/CreateComment.vue"
 
 import { getReadableDate } from '../services/date-service'
-
-const API_URL_post = 'http://localhost:3000/posts/';
-const API_URL_comment = "http://localhost:3000/comments/";
-
 
 export default {
     data() {
@@ -52,14 +48,14 @@ export default {
         }
     },
     created() {
-        axios.get(API_URL_post + this.$route.params.id)
+        axios.get("posts/" + this.$route.params.id)
             .then(response => {
                 this.post = response.data;
                 this.post.date = getReadableDate(this.post.date)
             }).catch(e => {
                 console.error(e);
             })
-        axios.get(API_URL_comment + "post/" + this.$route.params.id)
+        axios.get("comments/post/" + this.$route.params.id)
             .then(response => {
                 this.comments.push(...response.data.map(comment => {
                     comment.date = getReadableDate(comment.date);

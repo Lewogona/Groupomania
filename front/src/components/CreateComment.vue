@@ -32,10 +32,7 @@
 
 <script>
 
-import axios from "axios"
-import authHeader from '../services/auth-header'
-
-const API_URL = 'http://localhost:3000/comments/';
+import axios from "../services/axios-service"
 
 export default {
     name: 'HeaderForPages',
@@ -46,11 +43,9 @@ export default {
     methods: {
     async sendComment() {
         const date = new Date();
-        const res = await axios.post(API_URL + "post/" + this.$route.params.id, {
+        const res = await axios.post("comments/post/" + this.$route.params.id, {
             content: this.content,
             date
-        }, {
-            headers: authHeader()
         });
         console.log(res)
     }

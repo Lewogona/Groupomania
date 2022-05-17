@@ -38,33 +38,3 @@ exports.login = async (req, res) => {
        res.status(404).json({ error : "Utilisateur inexistant" });
     }
 };
-
-
-
-// exports.findUserById = (userId) => {
-//     return User.findByPk(UserId, { include:["post"] })
-//         .then((user) => {
-//             return user;
-//         })
-//         .catch((err) => {
-//             console.log(">> Error while finding user: ", err);
-//         });
-// };
-
-// exports.findPostById = (id) => {
-//     return Post.findByPk(id, { include: ["user"] })
-//         .then((post) => {
-//             return post;
-//         })
-//         .catch((err) => {
-//             console.log(">> Error while finding post: ", err);
-//         });
-// };
-
-// exports.findAll = () => {
-//     return User.findAll({
-//         include: ["post"],
-//     }).then((users) => {
-//         return users
-//     });
-// }
