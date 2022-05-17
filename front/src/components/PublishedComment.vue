@@ -15,7 +15,7 @@
                             </b-card-text>
                         </b-row>
                         <b-row align-h="end">
-                            <b-button size="sm"><b-icon-trash></b-icon-trash> Supprimer</b-button>
+                            <b-button size="sm" @click="deleteComment(id)"><b-icon-trash></b-icon-trash> Supprimer</b-button>
                         </b-row>
                     </b-card-body>
                 </b-col>
@@ -31,7 +31,9 @@ export default {
     props: {
         email: String,
         date: String,
-        content: String
+        content: String,
+        id: Number,
+        deleteComment: Function
     }
 }
 

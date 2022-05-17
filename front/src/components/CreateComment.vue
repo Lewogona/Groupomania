@@ -35,21 +35,26 @@
 import axios from "../services/axios-service"
 
 export default {
-    name: 'HeaderForPages',
+    name: 'CreateComment',
     props: {
         email: String,
         date: String
     },
+    data() {
+        return {
+            content: "",
+        }
+    },
     methods: {
-    async sendComment() {
-        const date = new Date();
-        const res = await axios.post("comments/post/" + this.$route.params.id, {
-            content: this.content,
-            date
-        });
-        console.log(res)
+        async sendComment() {
+            const date = new Date();
+            const res = await axios.post("comments/post/" + this.$route.params.id, {
+                content: this.content,
+                date
+            });
+            console.log(res)
+        }
     }
-}
 }
 
 </script>

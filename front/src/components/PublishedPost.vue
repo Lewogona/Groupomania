@@ -25,7 +25,7 @@
                 </div>
                     <b-button size="sm" v-if="displayPostButton" @click="displayPost"><b-icon-keyboard></b-icon-keyboard> {{ commentButton }}</b-button>
                     <b-button size="sm" v-else @click="displayCreateComment"><b-icon-keyboard></b-icon-keyboard> {{ commentButton }}</b-button>
-                    <b-button size="sm"><b-icon-trash></b-icon-trash> Supprimer</b-button>
+                    <b-button size="sm" @click="deletePost(id)"><b-icon-trash></b-icon-trash> Supprimer</b-button>
             </b-row>
         </template>
     </b-card>
@@ -44,7 +44,8 @@ export default {
         likes: Number,
         displayCreateComment: Function,
         commentButton: String,
-        id: Number
+        id: Number,
+        deletePost: Function
     },
     computed: {
         displayPostButton() {

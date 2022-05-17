@@ -28,3 +28,13 @@ exports.getOnePost = async (req, res) => {
     });
     res.status(200).json(post);
 }
+
+exports.deletePost = async (req, res) => {
+    const post = await Post.findOne({
+        where: { id: req.params.id },
+    });
+    if (post) {
+        await post.destroy();
+    }
+    res.status(200).json({ message: "post supprimé" })
+}

@@ -8,7 +8,8 @@
             :content="post.content" 
             :likes="post.likes"
             :id="post.id"
-            :key="post.id"/>
+            :key="post.id"
+            :deletePost="deletePost"/>
     </div>
 </template>
 
@@ -40,8 +41,16 @@ export default {
             }).catch(e => {
                 console.error(e);
             });
+    },
+    methods: {
+        async deletePost(id) {
+            const res = await axios.delete("posts/" + id);
+            console.log(res);
+            this.posts = this.posts.filter((post) => {
+                return post.id !== id;
+            })
+        }
     }
-
 }
 
 </script>

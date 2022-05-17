@@ -8,14 +8,16 @@
             :likes="post.likes"
             :id="post.id"
             :displayCreateComment="displayCreateComment"
-            />
+            :deletePost="deletePost"/>
         <CreateComment v-if="showCreateComment" :email="currentUser.email" date="Aujourd'hui"/>
         <PublishedComment 
             v-for="comment in comments" 
             :date="comment.date" 
             :email="comment.User.email"
-            :content="comment.content" 
-            :key="comment.comment"/>
+            :content="comment.content"
+            :id="comment.id"
+            :key="comment.id"
+            :deleteComment="deleteComment"/>
     </div>
 </template>
 
@@ -45,6 +47,18 @@ export default {
     methods: {
         displayCreateComment() {
             this.showCreateComment = !this.showCreateComment;
+        },
+        async deleteComment(id) {
+            const res = await axios.delete("comments/" + id);
+            console.log(res);
+            this.comments = this.comments.filter((comment) => {
+                return comment.id !== id;
+            })
+        },
+        async deletePost(id) {
+            const res = await axios.delete("posts/" + id);
+            console.log(res);
+            this.$router.push("/allposts");
         }
     },
     created() {

@@ -20,3 +20,13 @@ exports.getAllCommentsOfAPost = async (req, res) => {
     });
     res.status(200).json(comments);
 }
+
+exports.deleteComment = async (req, res) => {
+    const comment = await Comment.findOne({
+        where: { id: req.params.id },
+    });
+    if (comment) {
+        await comment.destroy();
+    }
+    res.status(200).json({ message: "commentaire supprimé" })
+}
