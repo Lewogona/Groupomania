@@ -7,7 +7,7 @@
         <b-row no-gutters>
             <b-col md="3">
                 <b-card-img :src="require('../assets/pp.jpg')" img-alt="Profile Photo" ></b-card-img>
-                <b-card-text>Posté par : {{ email }}</b-card-text>
+                <b-card-text>Posté par : {{ email || "Ancien utilisateur"}}</b-card-text>
                 <b-card-text>Le : {{ date }}</b-card-text>
             </b-col>
             <b-col md="9">
@@ -23,8 +23,18 @@
                 <div>
                     <b-icon-hand-thumbs-up></b-icon-hand-thumbs-up> {{ likes }}
                 </div>
-                    <b-button size="sm" v-if="displayPostButton" @click="displayPost"><b-icon-keyboard></b-icon-keyboard> {{ commentButton }}</b-button>
-                    <b-button size="sm" v-else @click="displayCreateComment"><b-icon-keyboard></b-icon-keyboard> {{ commentButton }}</b-button>
+                    <b-button 
+                        size="sm" 
+                        v-if="displayPostButton" 
+                        @click="displayPost">
+                        <b-icon-keyboard></b-icon-keyboard> {{ commentButton }}
+                    </b-button>
+                    <b-button 
+                        size="sm" 
+                        v-else 
+                        @click="displayCreateComment">
+                        <b-icon-keyboard></b-icon-keyboard> {{ commentButton }}
+                    </b-button>
                     <b-button 
                         size="sm" 
                         @click="deletePost(id)"

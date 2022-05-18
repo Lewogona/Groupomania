@@ -3,14 +3,14 @@
         <PublishedPost 
             commentButton="Commenter"
             :date="post.date"
-            :email="post.User.email"
+            :email="post.User && post.User.email"
             :title="post.title"
             :content="post.content"
             :likes="post.likes"
             :id="post.id"
             :displayCreateComment="displayCreateComment"
             :deletePost="deletePost"
-            :postUserId="post.User.id"/>
+            :postUserId="post.User && post.User.id"/>
         <CreateComment 
             v-if="showCreateComment" 
             :email="currentUser.email" 
@@ -20,12 +20,12 @@
         <PublishedComment 
             v-for="comment in comments" 
             :date="comment.date" 
-            :email="comment.User.email"
+            :email="comment.User && comment.User.email"
             :content="comment.content"
             :id="comment.id"
             :key="comment.id"
             :deleteComment="deleteComment"
-            :commentUserId="comment.User.id"/>
+            :commentUserId="comment.User && comment.User.id"/>
     </div>
 </template>
 
