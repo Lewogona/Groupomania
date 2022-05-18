@@ -7,7 +7,7 @@
         <b-row no-gutters>
             <b-col md="3">
                 <avatar 
-                    :username="`${currentUser.firstName} ${currentUser.lastName}`"
+                    :username="`${firstName} ${lastName}`"
                     background-color="#FFD7D7" 
                     :size="150" 
                     :rounded="false" 
@@ -61,6 +61,8 @@ export default {
         Avatar
     },
     props: {
+        firstName: String,
+        lastName: String,
         email: String,
         date: String,
         title: String,

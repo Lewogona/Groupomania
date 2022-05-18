@@ -4,6 +4,8 @@
             commentButton="Commenter"
             :date="post.date"
             :email="post.User && post.User.email"
+            :firstName="post.User && post.User.firstName"
+            :lastName="post.User && post.User.lastName"
             :title="post.title"
             :content="post.content"
             :likes="post.likes"
@@ -23,6 +25,8 @@
             :email="comment.User && comment.User.email"
             :content="comment.content"
             :id="comment.id"
+            :firstName="comment.User && comment.User.firstName"
+            :lastName="comment.User && comment.User.lastName"
             :key="comment.id"
             :deleteComment="deleteComment"
             :commentUserId="comment.User && comment.User.id"/>
