@@ -25,7 +25,12 @@
                 </div>
                     <b-button size="sm" v-if="displayPostButton" @click="displayPost"><b-icon-keyboard></b-icon-keyboard> {{ commentButton }}</b-button>
                     <b-button size="sm" v-else @click="displayCreateComment"><b-icon-keyboard></b-icon-keyboard> {{ commentButton }}</b-button>
-                    <b-button size="sm" @click="deletePost(id)"><b-icon-trash></b-icon-trash> Supprimer</b-button>
+                    <b-button 
+                        size="sm" 
+                        @click="deletePost(id)"
+                        v-if="currentUser.id === postUserId || currentUser.isAdmin">
+                            <b-icon-trash></b-icon-trash> Supprimer
+                    </b-button>
             </b-row>
         </template>
     </b-card>
@@ -45,11 +50,15 @@ export default {
         displayCreateComment: Function,
         commentButton: String,
         id: Number,
-        deletePost: Function
+        deletePost: Function,
+        postUserId: Number
     },
     computed: {
         displayPostButton() {
             return this.$router.currentRoute.path === "/allposts"
+        },
+        currentUser() {
+            return this.$store.state.auth.user;
         }
     },
     methods: {

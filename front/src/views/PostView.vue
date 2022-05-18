@@ -9,7 +9,8 @@
             :likes="post.likes"
             :id="post.id"
             :displayCreateComment="displayCreateComment"
-            :deletePost="deletePost"/>
+            :deletePost="deletePost"
+            :postUserId="post.User.id"/>
         <CreateComment 
             v-if="showCreateComment" 
             :email="currentUser.email" 
@@ -23,7 +24,8 @@
             :content="comment.content"
             :id="comment.id"
             :key="comment.id"
-            :deleteComment="deleteComment"/>
+            :deleteComment="deleteComment"
+            :commentUserId="comment.User.id"/>
     </div>
 </template>
 

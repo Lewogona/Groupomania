@@ -5,7 +5,8 @@
         :isAdmin="currentUser.isAdmin" 
         :firstName="currentUser.firstName" 
         :lastName="currentUser.lastName" 
-        :displayDeleteMessage="displayDeleteMessage"/>
+        :displayDeleteMessage="displayDeleteMessage"
+        :userId="currentUser.id"/>
         <b-modal 
             ref="confirm" 
             id="modal-1" 

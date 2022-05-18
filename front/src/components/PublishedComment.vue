@@ -15,7 +15,12 @@
                             </b-card-text>
                         </b-row>
                         <b-row align-h="end">
-                            <b-button size="sm" @click="deleteComment(id)"><b-icon-trash></b-icon-trash> Supprimer</b-button>
+                            <b-button 
+                                size="sm" 
+                                @click="deleteComment(id)" 
+                                v-if="currentUser.id === commentUserId || currentUser.isAdmin">
+                                    <b-icon-trash></b-icon-trash> Supprimer
+                            </b-button>
                         </b-row>
                     </b-card-body>
                 </b-col>
@@ -33,7 +38,13 @@ export default {
         date: String,
         content: String,
         id: Number,
-        deleteComment: Function
+        deleteComment: Function,
+        commentUserId: Number
+    },    
+    computed: {
+        currentUser() {
+            return this.$store.state.auth.user;
+        }
     }
 }
 

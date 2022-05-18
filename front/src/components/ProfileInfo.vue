@@ -11,7 +11,12 @@
             <b-card-text>Email : {{ email }}</b-card-text>
             <b-card-text v-if="isAdmin">Statut : Admin </b-card-text>
             <b-card-text v-else>Statut : Employé(e) </b-card-text>
-            <b-button @click="displayDeleteMessage" variant="outline-danger">Supprimer le compte</b-button>
+            <b-button 
+                @click="displayDeleteMessage" 
+                variant="outline-danger"
+                v-if="currentUser.id === userId || currentUser.isAdmin">
+                    Supprimer le compte
+            </b-button>
     </b-card>
 </template>
 
@@ -24,7 +29,13 @@ export default {
         lastName: String,
         email: String,
         isAdmin: Boolean,
-        displayDeleteMessage: Function
+        displayDeleteMessage: Function,
+        userId: Number
+    },
+    computed: {
+        currentUser() {
+            return this.$store.state.auth.user;
+        }
     }
 }
 

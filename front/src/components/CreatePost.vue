@@ -59,6 +59,7 @@ export default {
                 date
             });
             console.log(res)
+            this.$router.push("/allposts");
         }
     }
 }

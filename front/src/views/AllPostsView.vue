@@ -9,7 +9,8 @@
             :likes="post.likes"
             :id="post.id"
             :key="post.id"
-            :deletePost="deletePost"/>
+            :deletePost="deletePost"
+            :postUserId="post.User.id"/>
     </div>
 </template>
 
