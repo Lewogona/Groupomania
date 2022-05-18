@@ -3,7 +3,12 @@
         <b-card  footer-tag="footer">
             <b-row no-gutters>
                 <b-col md="3">
-                    <b-avatar rounded size="96px"></b-avatar>
+                    <avatar 
+                        username="Lewo Tran Phat" 
+                        background-color="#FFD7D7" 
+                        :size="150" 
+                        :rounded="false" 
+                        color="#FD2D01"></avatar>
                     <b-card-text>Réponse de : {{ email || "Ancien utilisateur" }}</b-card-text>
                     <b-card-text>Le : {{ date }}</b-card-text>
                 </b-col>
@@ -30,9 +35,13 @@
 </template>
 
 <script>
+import Avatar from "vue-avatar"
 
 export default {
     name: "PublishedComment",
+    components: {
+        Avatar
+    },
     props: {
         email: String,
         date: String,
