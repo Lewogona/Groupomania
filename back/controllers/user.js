@@ -38,3 +38,14 @@ exports.login = async (req, res) => {
        res.status(404).json({ error : "Utilisateur inexistant" });
     }
 };
+
+exports.deleteUser = async (req, res) => {
+    console.log("toto");
+    const user = await User.findOne({
+        where: { id: req.params.id },
+    });
+    if (user) {
+        await user.destroy();
+    }
+    res.status(200).json({ message: "utilisateur supprimé" })
+}
