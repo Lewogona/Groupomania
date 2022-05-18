@@ -5,6 +5,7 @@ import PostView from "../views/PostView.vue"
 import ProfileView from "../views/ProfileView.vue"
 import CreatePostView from "../views/CreatePostView.vue"
 import AllPostsView from "../views/AllPostsView.vue"
+import LastParticipations from "../views/LastParticipations.vue"
 import LoginPage from "../views/LoginPage.vue"
 import SignUp from "../views/SignUp.vue"
 
@@ -45,6 +46,11 @@ const routes = [
         path: "/allposts",
         name: "allposts",
         component: AllPostsView
+    },
+    {
+        path: "/lastparticipations",
+        name: "lastparticipations",
+        component: LastParticipations
     }
 ]
 

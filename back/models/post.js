@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     date: DataTypes.DATE,
-    userId: DataTypes.UUID
+    userId: DataTypes.UUID,
+    lastCommentedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'post',

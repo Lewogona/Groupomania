@@ -1,6 +1,7 @@
 const db = require("../models");
 const Comment = db.comments;
 const User = db.users;
+const Post = db.posts;
 
 exports.createComment = async (req, res) => {
     let comment = {
@@ -10,6 +11,7 @@ exports.createComment = async (req, res) => {
         postId: req.params.id
     };
     const createComment = await Comment.create(comment);
+    await Post.update({ lastCommentedAt: new Date() }, { where: { id: req.params.id } });
     res.status(201).json(createComment);
 }
 

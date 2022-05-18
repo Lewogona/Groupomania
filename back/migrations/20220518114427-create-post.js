@@ -20,6 +20,9 @@ module.exports = {
       userId: {
         type: Sequelize.UUID
       },
+      lastCommentedAt: {
+        type: Sequelize.DATE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -13,7 +13,8 @@
                     <template #button-content>
                         <b-icon-newspaper></b-icon-newspaper> Les posts
                     </template>
-                <b-dropdown-item href="#/allposts"><b-icon-eyeglasses></b-icon-eyeglasses> Consulter les publications</b-dropdown-item>
+                <b-dropdown-item href="#/lastparticipations"><b-icon-chat-square-dots></b-icon-chat-square-dots> Les dernières participations</b-dropdown-item>
+                <b-dropdown-item href="#/allposts"><b-icon-book></b-icon-book> Consulter toutes les publications</b-dropdown-item>
                 <b-dropdown-item href="#/newpost"><b-icon-pencil-fill></b-icon-pencil-fill> Publier un nouveau post</b-dropdown-item>
                 </b-nav-item-dropdown>
 
