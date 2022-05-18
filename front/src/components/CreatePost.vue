@@ -10,7 +10,7 @@
                     <avatar 
                         username="Lewo Tran Phat" 
                         background-color="#FFD7D7" 
-                        :size="200" 
+                        :size="150" 
                         :rounded="false" 
                         color="#FD2D01"></avatar>
                     <b-card-text>Posté par : {{ email }}</b-card-text>

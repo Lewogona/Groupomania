@@ -6,7 +6,7 @@
                     <avatar 
                         username="Lewo Tran Phat" 
                         background-color="#FFD7D7" 
-                        :size="150" 
+                        :size="100" 
                         :rounded="false" 
                         color="#FD2D01"></avatar>
                     <b-card-text>Réponse de : {{ email }}</b-card-text>

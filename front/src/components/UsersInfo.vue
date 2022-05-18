@@ -7,7 +7,7 @@
                     <b-card-text><strong>Nom : </strong>{{ lastName }}</b-card-text>
                     <b-card-text><strong>Email : </strong>{{ email }}</b-card-text>
                     <b-button 
-                        @click="displayDeleteMessage" 
+                        @click="displayDeleteMessage(userId)"
                         variant="outline-danger">
                             <b-icon-trash></b-icon-trash>
                     </b-button>

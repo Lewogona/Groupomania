@@ -6,12 +6,13 @@
             :firstName="user.firstName" 
             :lastName="user.lastName" 
             :displayDeleteMessage="displayDeleteMessage" 
+            :userId="user.id"
             :key="user.id" />
         <b-modal 
             ref="confirm" 
             id="modal-1" 
-            title="Confirmer la suppression du compte ?"
-            >
+            @ok="deleteUser()"
+            title="Confirmer la suppression du compte ?">
             <p class="my-4">Attention : tout compte supprimé ne pourra pas être récupéré.</p>
         </b-modal>
     </div>
@@ -29,18 +30,22 @@ export default {
     },
     data() {
         return {
-            users: []
+            users: [],
+            userIdToDelete: null
         }
     },
     methods: {
-        displayDeleteMessage() {
+        displayDeleteMessage(userId) {
+            this.userIdToDelete = userId;
             this.$refs["confirm"].toggle()
         },
-        // @ok="deleteUser()"
-        // async deleteUser() {
-        //     const res = await axios.delete("users/" + this.user.id);
-        //     console.log(res);
-        // }
+        async deleteUser() {
+            const res = await axios.delete("users/" + this.userIdToDelete);
+            console.log(res);
+            this.users = this.users.filter((user) => {
+                return user.id !== this.userIdToDelete;
+            })
+        }
     },
     computed: {
         currentUser() {

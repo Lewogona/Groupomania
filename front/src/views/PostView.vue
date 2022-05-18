@@ -72,7 +72,8 @@ export default {
             this.comments.unshift({ 
                 ...comment,
                 User: this.currentUser,
-                userId: this.currentUser.id
+                userId: this.currentUser.id,
+                date: getReadableDate(comment.date)
             });
         }
     },

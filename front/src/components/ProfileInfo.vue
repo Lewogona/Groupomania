@@ -5,9 +5,9 @@
         <b-row>
             <b-col cols="4">
                 <avatar 
-                    username="Lewo Tran Phat" 
+                    :username="`${firstName} ${lastName}`" 
                     background-color="#FFD7D7" 
-                    :size="350" 
+                    :size="200" 
                     :rounded="false" 
                     color="#FD2D01"></avatar>
             </b-col>
