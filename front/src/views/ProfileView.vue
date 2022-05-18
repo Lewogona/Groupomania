@@ -31,6 +31,22 @@ export default {
         return {
             user: {}
         }
+    },    
+    created() {
+        axios.get("users/" + this.$route.params.id)
+            .then(response => {
+                this.user = response.data;
+            })
+    },
+    mounted() {
+        if (!this.currentUser) {
+            this.$router.push('/login');
+        }
+    },
+    computed: {
+        currentUser() {
+            return this.$store.state.auth.user;
+        }
     },
     methods: {
         displayDeleteMessage() {
@@ -41,22 +57,6 @@ export default {
             console.log(res);
             this.$store.dispatch('auth/logout');
             this.$router.push("/signup");
-        }
-    },
-    computed: {
-        currentUser() {
-            return this.$store.state.auth.user;
-        }
-    },
-    created() {
-        axios.get("users/" + this.$route.params.id)
-            .then(response => {
-                this.user = response.data;
-            })
-    },
-    mounted() {
-        if (!this.currentUser) {
-            this.$router.push('/login');
         }
     }
 }

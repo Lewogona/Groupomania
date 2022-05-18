@@ -23,15 +23,14 @@ import {getReadableDate} from "../services/date-service"
 
 
 export default {
-
+    name: "AllPostsView",
+    components: {
+        PublishedPost
+    },
     data() {
         return {
             posts: []
         }
-    },
-    name: "AllPostsView",
-    components: {
-        PublishedPost
     },
     created() {
         axios.get("posts")

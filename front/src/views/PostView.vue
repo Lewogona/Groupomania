@@ -39,6 +39,12 @@ import CreateComment from "@/components/CreateComment.vue"
 import { getReadableDate } from '../services/date-service'
 
 export default {
+    name: 'PostView',
+    components: {
+        PublishedPost,
+        PublishedComment,
+        CreateComment
+    },
     data() {
         return {
             showCreateComment: false,
@@ -46,11 +52,28 @@ export default {
             comments: []
         }
     },
-    name: 'PostView',
-    components: {
-        PublishedPost,
-        PublishedComment,
-        CreateComment
+    created() {
+        axios.get("posts/" + this.$route.params.id)
+            .then(response => {
+                this.post = response.data;
+                this.post.date = getReadableDate(this.post.date)
+            }).catch(e => {
+                console.error(e);
+            })
+        axios.get("comments/post/" + this.$route.params.id)
+            .then(response => {
+                this.comments.push(...response.data.map(comment => {
+                    comment.date = getReadableDate(comment.date);
+                    return comment
+                }))
+            }).catch(e => {
+                console.error(e);
+            });
+    },
+    computed: {
+        currentUser() {
+            return this.$store.state.auth.user;
+        }
     },
     methods: {
         displayCreateComment() {
@@ -75,29 +98,6 @@ export default {
                 userId: this.currentUser.id,
                 date: getReadableDate(comment.date)
             });
-        }
-    },
-    created() {
-        axios.get("posts/" + this.$route.params.id)
-            .then(response => {
-                this.post = response.data;
-                this.post.date = getReadableDate(this.post.date)
-            }).catch(e => {
-                console.error(e);
-            })
-        axios.get("comments/post/" + this.$route.params.id)
-            .then(response => {
-                this.comments.push(...response.data.map(comment => {
-                    comment.date = getReadableDate(comment.date);
-                    return comment
-                }))
-            }).catch(e => {
-                console.error(e);
-            });
-    },
-    computed: {
-        currentUser() {
-            return this.$store.state.auth.user;
         }
     }
 }

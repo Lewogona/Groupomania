@@ -51,15 +51,15 @@ export default {
             message: ''
         };
     },
-    computed: {
-        loggedIn() {
-            return this.$store.state.auth.status.loggedIn;
-        }
-    },
     created() {
         // if (this.loggedIn) {
         //      this.$router.push('/');
         // }
+    },
+    computed: {
+        loggedIn() {
+            return this.$store.state.auth.status.loggedIn;
+        }
     },
     methods: {
         handleLogin() {

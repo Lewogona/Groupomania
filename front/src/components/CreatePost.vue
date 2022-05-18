@@ -8,7 +8,7 @@
             <b-row no-gutters>
                 <b-col md="3">
                     <avatar 
-                        username="Lewo Tran Phat" 
+                        :username="`${currentUser.firstName} ${currentUser.lastName}`" 
                         background-color="#FFD7D7" 
                         :size="150" 
                         :rounded="false" 
@@ -48,6 +48,10 @@ export default {
     name: 'PublishedPost',
     components: {
         Avatar
+    },    
+    props: {
+        email: String,
+        date: String
     },
     data() {
         return {
@@ -55,9 +59,10 @@ export default {
             content: "",
         }
     },
-    props: {
-        email: String,
-        date: String
+    computed: {
+        currentUser() {
+            return this.$store.state.auth.user;
+        }
     },
     methods: {
         async sendPost() {

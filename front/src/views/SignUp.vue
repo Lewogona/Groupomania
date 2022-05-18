@@ -43,14 +43,14 @@ export default {
             user: new User("", "", ""),
         }
     },
-    computed: {
-        loggedIn() {
-        return this.$store.state.auth.status.loggedIn;
-        }
-    },
     mounted() {
         if (this.loggedIn) {
             this.$router.push('/');
+        }
+    },
+    computed: {
+        loggedIn() {
+        return this.$store.state.auth.status.loggedIn;
         }
     },
     methods: {
@@ -78,7 +78,6 @@ export default {
         }
     }
 }
-
 </script>
 
 <style scoped lang="scss">

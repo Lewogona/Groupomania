@@ -19,6 +19,7 @@
 </template>
 
 <script>
+
 import axios from "../services/axios-service"
 
 import UsersInfo from "@/components/UsersInfo.vue"
@@ -33,6 +34,22 @@ export default {
             users: [],
             userIdToDelete: null
         }
+    },    
+        created() {
+        axios.get("users/")
+            .then(response => {
+                this.users.push(...response.data)
+            })
+    },
+    mounted() {
+        if (!this.currentUser) {
+            this.$router.push('/login');
+        }
+    },
+    computed: {
+        currentUser() {
+            return this.$store.state.auth.user;
+        }
     },
     methods: {
         displayDeleteMessage(userId) {
@@ -45,22 +62,6 @@ export default {
             this.users = this.users.filter((user) => {
                 return user.id !== this.userIdToDelete;
             })
-        }
-    },
-    computed: {
-        currentUser() {
-            return this.$store.state.auth.user;
-        }
-    },
-    created() {
-        axios.get("users/")
-            .then(response => {
-                this.users.push(...response.data)
-            })
-    },
-    mounted() {
-        if (!this.currentUser) {
-            this.$router.push('/login');
         }
     }
 }

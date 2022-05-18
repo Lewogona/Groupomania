@@ -17,10 +17,7 @@
 <script>
 
 export default {
-    name: 'HomePage',
-    props: {
-    
-    }
+    name: 'HomePage'
 }
 </script>
 

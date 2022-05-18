@@ -4,7 +4,7 @@
             <b-row no-gutters>
                 <b-col md="3">
                     <avatar 
-                        username="Lewo Tran Phat" 
+                        :username="`${currentUser.firstName} ${currentUser.lastName}`"
                         background-color="#FFD7D7" 
                         :size="100" 
                         :rounded="false" 

@@ -22,15 +22,14 @@ import {getReadableDate} from "../services/date-service"
 
 
 export default {
-
+    name: "LastParticipation",
+    components: {
+        PublishedPost
+    },
     data() {
         return {
             posts: []
         }
-    },
-    name: "LastParticipation",
-    components: {
-        PublishedPost
     },
     created() {
         axios.get("posts/last")
