@@ -20,7 +20,7 @@
                             </b-row>
                             <b-row align-h="end">
                                 <b-button size="sm" type="submit" variant="success" class="mr-3"><b-icon-check></b-icon-check> Valider</b-button>
-                                <b-button size="sm" href="#/allposts" variant="danger" class="mr-3"><b-icon-trash></b-icon-trash> Annuler</b-button>
+                                <b-button size="sm" @click="displayCreateComment" variant="danger" class="mr-3"><b-icon-trash></b-icon-trash> Annuler</b-button>
                             </b-row>
                         </b-form>
                     </b-card-body>
@@ -38,7 +38,9 @@ export default {
     name: 'CreateComment',
     props: {
         email: String,
-        date: String
+        date: String,
+        displayCreateComment: Function,
+        displayNewComment: Function
     },
     data() {
         return {
@@ -52,7 +54,9 @@ export default {
                 content: this.content,
                 date
             });
-            console.log(res)
+            console.log(res);
+            this.displayCreateComment()
+            this.displayNewComment(res.data)
         }
     }
 }

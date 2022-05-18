@@ -1,6 +1,7 @@
 <template>
     <div v-if="post.id">
-        <PublishedPost commentButton="Commenter"
+        <PublishedPost 
+            commentButton="Commenter"
             :date="post.date"
             :email="post.User.email"
             :title="post.title"
@@ -9,7 +10,12 @@
             :id="post.id"
             :displayCreateComment="displayCreateComment"
             :deletePost="deletePost"/>
-        <CreateComment v-if="showCreateComment" :email="currentUser.email" date="Aujourd'hui"/>
+        <CreateComment 
+            v-if="showCreateComment" 
+            :email="currentUser.email" 
+            date="Aujourd'hui" 
+            :displayCreateComment="displayCreateComment"
+            :displayNewComment="displayNewComment"/>
         <PublishedComment 
             v-for="comment in comments" 
             :date="comment.date" 
@@ -59,6 +65,13 @@ export default {
             const res = await axios.delete("posts/" + id);
             console.log(res);
             this.$router.push("/allposts");
+        },
+        displayNewComment(comment) {
+            this.comments.unshift({ 
+                ...comment,
+                User: this.currentUser,
+                userId: this.currentUser.id
+            });
         }
     },
     created() {
