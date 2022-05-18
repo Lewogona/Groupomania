@@ -2,7 +2,7 @@
     <div>
         <PublishedPost commentButton="Voir les commentaires"
             v-for="post in posts"
-            :email="post.User.email"
+            :email="post.User && post.User.email"
             :date="post.date" 
             :title="post.title" 
             :content="post.content" 
@@ -10,7 +10,7 @@
             :id="post.id"
             :key="post.id"
             :deletePost="deletePost"
-            :postUserId="post.User.id"/>
+            :postUserId="post.User && post.User.id"/>
     </div>
 </template>
 

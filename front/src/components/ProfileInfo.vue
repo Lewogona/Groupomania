@@ -4,8 +4,7 @@
             :img-src="require('../assets/pp.jpg')" 
             img-alt="Profile Photo" 
             img-left 
-            class="mb-3"
-        >
+            class="mb-3">
             <b-card-text>Prénom : {{ firstName }}</b-card-text>
             <b-card-text>Nom : {{ lastName }}</b-card-text>
             <b-card-text>Email : {{ email }}</b-card-text>

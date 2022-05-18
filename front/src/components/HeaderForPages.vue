@@ -22,7 +22,8 @@
                     <template #button-content>
                         <b-icon-person-lines-fill></b-icon-person-lines-fill> Mon compte
                     </template>
-                <b-dropdown-item @click="goToProfilePage"><b-icon-person-square></b-icon-person-square> Profil</b-dropdown-item>
+                <b-dropdown-item :href="`#/profile/${currentUser.id}`"><b-icon-person-square></b-icon-person-square> Profil</b-dropdown-item>
+                <b-dropdown-item v-if="currentUser.isAdmin" href="#/allusers"><b-icon-view-list></b-icon-view-list> Tous les profils</b-dropdown-item>
                 <b-dropdown-item @click="logOut"><b-icon-power></b-icon-power> Déconnexion</b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
@@ -35,6 +36,9 @@
 
 export default {
     name: 'HeaderForPages',
+    props: {
+        isAdmin: Boolean
+    },
     computed: {
         currentUser() {
             return this.$store.state.auth.user;
@@ -44,9 +48,6 @@ export default {
         logOut() {
             this.$store.dispatch('auth/logout');
             this.$router.push('/login');
-        },
-        goToProfilePage() {
-            this.$router.push(`/profile/${this.currentUser.id}`)
         }
     }
 }

@@ -8,6 +8,7 @@ import AllPostsView from "../views/AllPostsView.vue"
 import LastParticipations from "../views/LastParticipations.vue"
 import LoginPage from "../views/LoginPage.vue"
 import SignUp from "../views/SignUp.vue"
+import AllUsers from "../views/AllUsers.vue"
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
         path: "/lastparticipations",
         name: "lastparticipations",
         component: LastParticipations
+    },
+    {
+        path: "/allusers",
+        name: "allusers",
+        component: AllUsers
     }
 ]
 

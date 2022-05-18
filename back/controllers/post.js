@@ -19,7 +19,6 @@ exports.getAllPosts = async (req, res) => {
         include: User,
         order: [["createdAt", "DESC"]]
     });
-    console.log("Hello")
     res.status(200).json(posts);
 }
 
@@ -28,7 +27,6 @@ exports.getAllPostsByLastParticipations = async (req, res) => {
         include: User,
         order: [["updatedAt", "DESC"]]
     });
-    console.log("Hello")
     res.status(200).json(posts);
 }
 

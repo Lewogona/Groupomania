@@ -1,17 +1,17 @@
 <template>
     <div>
-        <ProfileInfo 
+        <UsersInfo
+            v-for="user in users"
             :email="user.email" 
-            :isAdmin="user.isAdmin" 
             :firstName="user.firstName" 
             :lastName="user.lastName" 
-            :displayDeleteMessage="displayDeleteMessage"
-            :userId="user.id"/>
+            :displayDeleteMessage="displayDeleteMessage" 
+            :key="user.id" />
         <b-modal 
             ref="confirm" 
             id="modal-1" 
             title="Confirmer la suppression du compte ?"
-            @ok="deleteUser">
+            >
             <p class="my-4">Attention : tout compte supprimé ne pourra pas être récupéré.</p>
         </b-modal>
     </div>
@@ -20,28 +20,27 @@
 <script>
 import axios from "../services/axios-service"
 
-import ProfileInfo from "@/components/ProfileInfo.vue"
+import UsersInfo from "@/components/UsersInfo.vue"
 
 export default {
-    name: "ProfileView",
+    name: "AllUsers",
     components: {
-        ProfileInfo,
+        UsersInfo,
     },
     data() {
         return {
-            user: {}
+            users: []
         }
     },
     methods: {
         displayDeleteMessage() {
             this.$refs["confirm"].toggle()
         },
-        async deleteUser() {
-            const res = await axios.delete("users/" + this.$route.params.id);
-            console.log(res);
-            this.$store.dispatch('auth/logout');
-            this.$router.push("/signup");
-        }
+        // @ok="deleteUser()"
+        // async deleteUser() {
+        //     const res = await axios.delete("users/" + this.user.id);
+        //     console.log(res);
+        // }
     },
     computed: {
         currentUser() {
@@ -49,9 +48,9 @@ export default {
         }
     },
     created() {
-        axios.get("users/" + this.$route.params.id)
+        axios.get("users/")
             .then(response => {
-                this.user = response.data;
+                this.users.push(...response.data)
             })
     },
     mounted() {
