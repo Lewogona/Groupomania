@@ -20,7 +20,7 @@
                     <b-form-group label="Mot de passe" label-for="input-4" class="text-left">
                         <b-form-input id="input-4" v-model="user.password" type="password" required></b-form-input>
                     </b-form-group>
-                    <b-button class="my-3" type="submit">S'inscrire</b-button>
+                    <b-button class="my-3" type="submit" pill variant="info" >S'inscrire</b-button>
                     <p class="my-3">Déjà inscrit ? <b-link href="#/login">Connectez-vous ici !</b-link></p>
                 </b-form>
             </b-col>

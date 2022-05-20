@@ -1,14 +1,14 @@
 <template> 
-    <b-container>
+    <b-container class="mt-4">
         <b-card  footer-tag="footer">
             <b-row no-gutters>
                 <b-col md="3">
                     <avatar 
                         :username="`${firstName} ${lastName}`"
-                        background-color="#FFD7D7" 
+                        background-color="var(--blue)" 
                         :size="100" 
                         :rounded="false" 
-                        color="#FD2D01"></avatar>
+                        color="var(--info)"></avatar>
                     <b-card-text>Réponse de : {{ email || "Ancien utilisateur" }}</b-card-text>
                     <b-card-text>Le : {{ date }}</b-card-text>
                 </b-col>
@@ -21,6 +21,8 @@
                         </b-row>
                         <b-row align-h="end">
                             <b-button 
+                                pill
+                                variant="info" 
                                 size="sm" 
                                 @click="deleteComment(id)" 
                                 v-if="currentUser.id === commentUserId || currentUser.isAdmin">

@@ -1,17 +1,16 @@
 <template> 
-<b-container>
-    <b-card header-tag="header" footer-tag="footer">
-        <template #header>
-            <h6 class="mb-0">{{ title }}</h6>
-        </template>
+<b-container class="mt-5">
+    <b-card 
+        header-bg-variant="secondary"
+        :header="`${title}`">
         <b-row no-gutters>
             <b-col md="3">
                 <avatar 
                     :username="`${firstName} ${lastName}`"
-                    background-color="#FFD7D7" 
+                    background-color="var(--blue)"
                     :size="150" 
                     :rounded="false" 
-                    color="#FD2D01"></avatar>
+                    color="var(--info)"></avatar>
                 <b-card-text>Posté par : {{ email || "Ancien utilisateur"}}</b-card-text>
                 <b-card-text>Le : {{ date }}</b-card-text>
             </b-col>
@@ -28,19 +27,25 @@
                 <div>
                     <b-icon-hand-thumbs-up></b-icon-hand-thumbs-up> {{ likes }}
                 </div>
-                    <b-button 
+                    <b-button
+                        pill
+                        variant="info" 
                         size="sm" 
                         v-if="displayPostButton" 
                         @click="displayPost">
                         <b-icon-keyboard></b-icon-keyboard> {{ commentButton }}
                     </b-button>
-                    <b-button 
+                    <b-button
+                        pill
+                        variant="info" 
                         size="sm" 
                         v-else 
                         @click="displayCreateComment">
                         <b-icon-keyboard></b-icon-keyboard> {{ commentButton }}
                     </b-button>
                     <b-button 
+                        pill
+                        variant="info"
                         size="sm" 
                         @click="deletePost(id)"
                         v-if="currentUser.id === postUserId || currentUser.isAdmin">

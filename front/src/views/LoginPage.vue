@@ -24,7 +24,7 @@
                         class="alert alert-danger"
                         role="alert"
                         >Champ vide</div>
-                    <b-button class="my-3" type="submit">Se connecter</b-button>
+                    <b-button class="my-3" type="submit" pill variant="info">Se connecter</b-button>
                     <p class="my-3">Vous n'avez pas de compte ? <b-link href="#/signup">Inscrivez-vous ici !</b-link></p>
                 </b-form>
             </b-col>

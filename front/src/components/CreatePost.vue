@@ -9,12 +9,12 @@
                 <b-col md="3">
                     <avatar 
                         :username="`${currentUser.firstName} ${currentUser.lastName}`" 
-                        background-color="#FFD7D7" 
+                        background-color="var(--blue)" 
                         :size="150" 
                         :rounded="false" 
-                        color="#FD2D01"></avatar>
+                        color="var(--info)"></avatar>
                     <b-card-text>Posté par : {{ email }}</b-card-text>
-                    <b-card-text>Le : {{ date }}</b-card-text>
+                    <b-card-text>{{ date }}</b-card-text>
                 </b-col>
                 <b-col md="9">
                     <b-card-body>

@@ -1,34 +1,33 @@
 <template> 
     <b-container>
-        <b-card  footer-tag="footer">
+        <b-card  footer-tag="footer" no-body>
             <b-row no-gutters>
-                <b-col md="3">
+                <b-col cols="2">
                     <avatar 
                         :username="`${currentUser.firstName} ${currentUser.lastName}`" 
-                        background-color="#FFD7D7" 
+                        background-color="var(--blue)" 
                         :size="100" 
                         :rounded="false" 
-                        color="#FD2D01"></avatar>
-                    <b-card-text>Réponse de : {{ email }}</b-card-text>
-                    <b-card-text>{{ date }}</b-card-text>
+                        color="var(--info)"
+                        class="mx-auto mt-4"></avatar>
                 </b-col>
-                <b-col md="9">
-                    <b-card-body>
-                        <b-form @submit.prevent="sendComment">
+                <b-col cols="10">
+                    <b-form @submit.prevent="sendComment">
+                        <b-col class="my-4">
                             <b-row>
                                 <b-form-textarea
                                     id="textarea"
                                     v-model="content"
-                                    placeholder="Écrivez votre texte..."
+                                    placeholder="Écrivez votre commentaire..."
                                     rows="4"
                                 ></b-form-textarea>
                             </b-row>
-                            <b-row align-h="end">
+                            <b-row align-h="end" class="mt-3">
                                 <b-button size="sm" type="submit" variant="success" class="mr-3"><b-icon-check></b-icon-check> Valider</b-button>
                                 <b-button size="sm" @click="displayCreateComment" variant="danger" class="mr-3"><b-icon-trash></b-icon-trash> Annuler</b-button>
                             </b-row>
-                        </b-form>
-                    </b-card-body>
+                        </b-col>
+                    </b-form>
                 </b-col>
             </b-row>
         </b-card>

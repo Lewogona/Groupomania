@@ -1,15 +1,17 @@
 <template> 
+<b-container>
     <b-card 
-        title="Profil d'utilisateur" 
+        header-bg-variant="secondary"
+        header="Profil d'utilisateur"
         class="mb-3">
         <b-row>
             <b-col cols="4">
                 <avatar 
                     :username="`${firstName} ${lastName}`" 
-                    background-color="#FFD7D7" 
+                    background-color="var(--blue)" 
                     :size="200" 
                     :rounded="false" 
-                    color="#FD2D01"></avatar>
+                    color="var(--info)"></avatar>
             </b-col>
             <b-col cols="8">
                 <b-card-text>Prénom : {{ firstName }}</b-card-text>
@@ -26,6 +28,7 @@
             </b-col>
         </b-row>
     </b-card>
+</b-container>
 </template>
 
 <script>
