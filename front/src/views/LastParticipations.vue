@@ -1,8 +1,11 @@
 <template>
     <div>
-        <PublishedPost commentButton="Voir les commentaires"
+        <PublishedPost 
+            commentButton="Voir le fil"
             v-for="post in posts"
             :email="post.User && post.User.email"
+            :firstName="post.User && post.User.firstName"
+            :lastName="post.User && post.User.lastName"
             :date="post.date" 
             :title="post.title" 
             :content="post.content" 

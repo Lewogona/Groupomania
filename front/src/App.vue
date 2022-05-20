@@ -45,8 +45,24 @@ $card-border-color: grey;
     background-color: white;
     min-height: 100vh;
     width: 100%;
-    @media (min-width: 1200px) {
+    @include media-breakpoint-up(xl) {
         width: 1200px;
     }
+}
+
+.border-profile {
+    border-right: 1px solid grey;
+    @include media-breakpoint-down(sm) {
+        border-right: none;
+        border-bottom: 1px solid grey;
+    }
+}
+
+.card-text {
+    margin-bottom: 2px;
+}
+
+.col-footer {
+    padding: 0px;
 }
 </style>

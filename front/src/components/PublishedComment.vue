@@ -1,26 +1,32 @@
 <template> 
-    <b-container class="mt-4">
-        <b-card  footer-tag="footer">
-            <b-row no-gutters>
-                <b-col md="3">
-                    <avatar 
-                        :username="`${firstName} ${lastName}`"
-                        background-color="var(--blue)" 
-                        :size="100" 
-                        :rounded="false" 
-                        color="var(--info)"></avatar>
-                    <b-card-text>Réponse de : {{ email || "Ancien utilisateur" }}</b-card-text>
-                    <b-card-text>Le : {{ date }}</b-card-text>
-                </b-col>
-                <b-col md="9">
-                    <b-card-body>
-                        <b-row>
-                            <b-card-text>
-                                {{ content }}
-                            </b-card-text>
-                        </b-row>
-                        <b-row align-h="end">
-                            <b-button 
+    <b-container class="mt-3">
+        <b-row align-h="center">
+            <b-col cols="11">
+                <b-card no-body>
+                    <b-row no-gutters class="m-2">
+                        <b-col md="3" lg="2" class="text-center border-profile">
+                            <avatar 
+                                :username="`${firstName} ${lastName}`"
+                                background-color="var(--blue)" 
+                                :size="100" 
+                                :rounded="false" 
+                                color="var(--info)"
+                                class="mx-auto"></avatar>
+                            <div class="my-1">
+                                <b-card-text>Réponse de :</b-card-text>
+                                <b-card-text>{{ email || "Ancien utilisateur" }}</b-card-text>
+                                <b-card-text>Le : {{ date }}</b-card-text>
+                            </div>
+                        </b-col>
+                        <b-card-body id="relative">
+                            <b-col md="9" lg="10">
+                                <b-row id="minimum">
+                                    <b-card-text>
+                                        {{ content }}
+                                    </b-card-text>
+                                </b-row>
+                            </b-col>
+                            <b-button class="mx-3" id="absolute"
                                 pill
                                 variant="info" 
                                 size="sm" 
@@ -28,11 +34,11 @@
                                 v-if="currentUser.id === commentUserId || currentUser.isAdmin">
                                     <b-icon-trash></b-icon-trash> Supprimer
                             </b-button>
-                        </b-row>
-                    </b-card-body>
-                </b-col>
-            </b-row>
-        </b-card>
+                        </b-card-body>
+                    </b-row>
+                </b-card>
+            </b-col>
+        </b-row>
     </b-container>
 </template>
 
@@ -65,7 +71,18 @@ export default {
 
 <style scoped lang="scss">
 
-.card-body {
-    padding: 10px;
+#relative {
+    position: relative;
 }
+
+#absolute {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+}
+
+#minimum {
+    min-height: 50px;
+}
+
 </style>
