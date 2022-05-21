@@ -13,7 +13,9 @@
                             class="mx-auto"></avatar>
                         <div class="my-1">
                             <b-card-text>Réponse de</b-card-text>
-                            <b-card-text>{{ email || "Ancien utilisateur" }},</b-card-text>
+                            <b-card-text>
+                                <UserName :firstName="firstName" :lastName="lastName"/>,
+                            </b-card-text>
                             <b-card-text>le {{ date }}.</b-card-text>
                         </div>
                     </b-col>

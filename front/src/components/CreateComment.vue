@@ -13,7 +13,9 @@
                                 class="mx-auto"></avatar>
                             <div class="my-1">
                                 <b-card-text>Réponse de</b-card-text>
-                                <b-card-text>{{ email }},</b-card-text>
+                                <b-card-text>
+                                    <UserName :firstName="currentUser.firstName" :lastName="currentUser.lastName"/>,
+                                </b-card-text>
                                 <b-card-text>{{ date }}.</b-card-text>
                             </div>
                         </b-col>
@@ -56,11 +58,10 @@
 import axios from "../services/axios-service"
 import Avatar from "vue-avatar"
 
-
 export default {
     name: 'CreateComment',
     components: {
-        Avatar
+        Avatar,
     },
     props: {
         email: String,
