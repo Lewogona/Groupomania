@@ -1,5 +1,5 @@
 <template> 
-    <b-row align-h="center" class="mt-1">
+    <b-row align-h="center" class="mt-1" id="comment-animation">
         <b-col cols="11">
             <b-card no-body>
                     <b-row no-gutters class="m-2">
@@ -98,4 +98,20 @@ export default {
 
 <style scoped lang="scss">
 
+#comment-animation {
+    position: relative;
+    top: -10px;
+    opacity: 0;
+    animation: appearance-delay__card 250ms forwards ease-in-out;
+}
+
+@keyframes appearance-delay__card {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        top: 0;
+    }
+}
 </style>
