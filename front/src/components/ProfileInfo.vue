@@ -15,11 +15,11 @@
                             class="mx-auto"></avatar>
                     </b-col>
                     <b-col md="7" lg="8" xl="9">
-                        <b-card-text>Prénom : {{ firstName }}</b-card-text>
-                        <b-card-text>Nom : {{ lastName }}</b-card-text>
-                        <b-card-text>Email : {{ email }}</b-card-text>
-                        <b-card-text v-if="isAdmin">Statut : Admin </b-card-text>
-                        <b-card-text v-else>Statut : Employé(e) </b-card-text>
+                        <b-card-text class="my-3">Prénom : {{ firstName }}</b-card-text>
+                        <b-card-text class="my-3">Nom : {{ lastName }}</b-card-text>
+                        <b-card-text class="my-3">Email : {{ email }}</b-card-text>
+                        <b-card-text v-if="isAdmin" class="my-3">Statut : Admin </b-card-text>
+                        <b-card-text v-else class="my-3">Statut : Employé(e) </b-card-text>
                         <b-button 
                             @click="displayDeleteMessage" 
                             variant="outline-danger"

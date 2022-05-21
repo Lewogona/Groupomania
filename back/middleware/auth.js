@@ -1,6 +1,9 @@
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
 
+const db = require("../models");
+const User = db.users;
+
 module.exports = async (req, res, next) => {
     try {
         const token = req.headers['authorization'];
@@ -10,6 +13,8 @@ module.exports = async (req, res, next) => {
         if (req.body.userId && req.body.userId !== userId) {
             throw "Invalid user ID";
         } else {
+            const user = await User.findOne({ where: { id: userId } })
+            req.user = { ...user }
             next();
         }
     } catch(err){

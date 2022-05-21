@@ -43,7 +43,11 @@ exports.deletePost = async (req, res) => {
         where: { id: req.params.id },
     });
     if (post) {
-        await post.destroy();
+        if (req.user.dataValues.isAdmin || req.auth.userId === req.user.dataValues.id) {
+            await post.destroy();
+        } else {
+            res.status(401).json({ message: "Suppression non autorisée" })
+        }
     }
-    res.status(200).json({ message: "post supprimé" })
+    res.status(200).json({ message: "Post supprimé" })
 }
