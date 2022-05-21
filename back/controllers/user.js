@@ -75,7 +75,6 @@ exports.login = async (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
     const users = await User.findAll()
-    console.log(req.user.dataValues.isAdmin);
     if (req.user.dataValues.isAdmin) {
         res.status(200).json(users);
     } else {
