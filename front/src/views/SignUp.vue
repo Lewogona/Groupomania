@@ -1,5 +1,5 @@
 <template> 
-    <b-container>
+    <div>
         <b-row class="justify-content-center">
             <b-col cols="10" md="6" lg="4">
                 <b-img :src="require('../assets/logo.png')" alt="Logo de Groupomania" fluid></b-img> 
@@ -29,7 +29,7 @@
             <b-col cols="4">
             </b-col>
         </b-row>
-    </b-container>
+    </div>
 </template>
 
 <script>

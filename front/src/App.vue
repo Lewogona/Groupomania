@@ -1,8 +1,8 @@
 <template>
-    <div id="app">
+    <b-container fluid="lg" id="app">
         <HeaderForPages v-if="showHeader"/>
         <router-view/>
-    </div>
+    </b-container>
 </template>
 
 <script>
@@ -64,5 +64,19 @@ $card-border-color: grey;
 
 .col-footer {
     padding: 0px;
+}
+
+#not-on-phone {
+    width: 300px;
+    @include media-breakpoint-down(xs) {
+        display: none;
+    }
+}
+
+#only-on-phone {
+    width: 50px;
+    @include media-breakpoint-up(sm) {
+        display: none;
+    }
 }
 </style>
