@@ -31,8 +31,8 @@ exports.deleteComment = async (req, res) => {
         if (req.user.dataValues.isAdmin || req.auth.userId === req.user.dataValues.id) {
             await comment.destroy();
         } else {
-            res.status(401).json({ message: "Suppression non autorisée" })
+            res.status(401).json({ message: "Unauthorized delete" })
         }
     }
-    res.status(200).json({ message: "commentaire supprimé" })
+    res.status(200).json({ message: "Comment deleted" })
 }

@@ -11,19 +11,10 @@
                     <b-form-group label="Votre adresse mail" label-for="input-1" class="text-left">
                         <b-form-input id="input-1" v-model="user.email" type="email" required></b-form-input>
                     </b-form-group>
-                    <div
-                        v-if="errors.has('email')"
-                        class="alert alert-danger"
-                        role="alert"
-                        >Champ vide</div>
                     <b-form-group label="Votre mot de passe" label-for="input-2" class="text-left">
                         <b-form-input id="input-2" v-model="user.password" type="password" required></b-form-input>
                     </b-form-group>
-                    <div
-                        v-if="errors.has('password')"
-                        class="alert alert-danger"
-                        role="alert"
-                        >Champ vide</div>
+                    <b-form-text text-variant="danger">{{ messageError }}</b-form-text>
                     <b-button class="my-3" type="submit" pill variant="info">Se connecter</b-button>
                     <p class="my-3">Vous n'avez pas de compte ? <b-link href="#/signup">Inscrivez-vous ici !</b-link></p>
                 </b-form>
@@ -48,7 +39,7 @@ export default {
         return {
             user: new User('', ''),
             loading: false,
-            message: ''
+            messageError: ''
         };
     },
     created() {
@@ -74,10 +65,7 @@ export default {
                             this.$router.push('/');
                         },
                         error => {
-                            this.message =
-                                (error.response && error.response.data) ||
-                                error.message ||
-                                error.toString();
+                            this.messageError = error.response.data.error;
                         }
                     );
                 }

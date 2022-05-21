@@ -8,11 +8,11 @@ const User = db.users;
 exports.signup = async (req, res) => {
     let usr = null;
     try {
-        user = await User.findOne({ where: {email: req.body.email }});
+        usr = await User.findOne({ where: {email: req.body.email }});
     } catch (e) {
         console.error(e)
     }
-    if (!user) {
+    if (!usr) {
         usr = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -26,10 +26,10 @@ exports.signup = async (req, res) => {
             const created_user = await User.create(usr);
             res.status(201).json(created_user);
         } else {
-            res.status(400).json({ message: "At least one of the field is not valid" })
+            res.status(400).json({ error: "At least one of the field is not valid" })
         }
     } else {
-        res.status(400).json({ message: "Utilisateur déjà existant" })
+        res.status(400).json({ error: "Utilisateur déjà existant" })
     }
 };
 
@@ -69,16 +69,16 @@ exports.login = async (req, res) => {
         }
      
     } else{
-       res.status(404).json({ error : "Utilisateur inexistant" });
+       res.status(404).json({ error: "Utilisateur inexistant" });
     }
 };
 
 exports.getAllUsers = async (req, res) => {
     const users = await User.findAll()
-    if (req.user.dataValues.isAdmin) {
+    if (req.user.isAdmin) {
         res.status(200).json(users);
     } else {
-        res.status(401).json({ message: "Rêquete non autorisée" })
+        res.status(401).json({ message: "Unauthorized request" })
     }
 }
 
@@ -97,8 +97,8 @@ exports.deleteUser = async (req, res) => {
         if (req.user.dataValues.isAdmin || req.auth.userId === req.user.dataValues.id) {
             await user.destroy();
         } else {
-            res.status(401).json({ message: "Suppression non autorisée" })
+            res.status(401).json({ message: "Unauthorized delete" })
         }
     }
-    res.status(200).json({ message: "Utilisateur supprimé" })
+    res.status(200).json({ message: "User deleted" })
 }

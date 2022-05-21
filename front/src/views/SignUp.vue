@@ -25,6 +25,7 @@
                         <b-form-text>Votre mot de passe doit contenir au minimum 8 caractères dont un chiffre.</b-form-text>
                         <b-form-text>{{ error.password }}</b-form-text>
                     </b-form-group>
+                    <b-form-text text-variant="danger">{{ messageError }}</b-form-text>
                     <b-button class="my-3" type="submit" pill variant="info" >S'inscrire</b-button>
                     <p class="my-3">Déjà inscrit ? <b-link href="#/login">Connectez-vous ici !</b-link></p>
                 </b-form>
@@ -51,7 +52,8 @@ export default {
                 firstName: "",
                 lastName: "",
                 password: ""
-            }
+            },
+            messageError: ""
         }
     },
     mounted() {
@@ -91,7 +93,7 @@ export default {
                         this.$router.push('/login');
                     },
                     error => {
-                        console.error(error);
+                        this.messageError = error.response.data.error;
                     }
                 );
             }

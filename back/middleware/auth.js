@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
             throw "Invalid user ID";
         } else {
             const user = await User.findOne({ where: { id: userId } })
-            req.user = { ...user }
+            req.user = { ...user.dataValues }
             next();
         }
     } catch(err){
