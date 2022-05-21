@@ -10,7 +10,8 @@
                     <b-form-input 
                         type="text" 
                         v-model="title" 
-                        placeholder="Titre de la publication">
+                        placeholder="Titre de la publication"
+                        required>
                     </b-form-input>
                 </template>
                 <b-row no-gutters class="my-2">
@@ -38,7 +39,8 @@
                                     v-model="content"
                                     placeholder="Écrivez votre publication..."
                                     rows="9"
-                                ></b-form-textarea>
+                                    required>
+                                </b-form-textarea>
                             </b-card-text>
                         </b-card-body>
                     </b-col>
@@ -80,12 +82,11 @@ export default {
     methods: {
         async sendPost() {
             const date = new Date();
-            const res = await axios.post("posts", {
+            await axios.post("posts", {
                 title: this.title,
                 content: this.content,
                 date
             });
-            console.log(res)
             this.$router.push("/allposts");
         }
     }

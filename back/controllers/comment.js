@@ -4,15 +4,19 @@ const User = db.users;
 const Post = db.posts;
 
 exports.createComment = async (req, res) => {
-    let comment = {
-        content: req.body.content,
-        date: req.body.date,
-        userId: req.auth.userId,
-        postId: req.params.id
-    };
-    const createComment = await Comment.create(comment);
-    await Post.update({ lastCommentedAt: new Date() }, { where: { id: req.params.id } });
-    res.status(201).json(createComment);
+    if(req.body.content) {
+        let comment = {
+            content: req.body.content,
+            date: req.body.date,
+            userId: req.auth.userId,
+            postId: req.params.id
+        };
+        const createComment = await Comment.create(comment);
+        await Post.update({ lastCommentedAt: new Date() }, { where: { id: req.params.id } });
+        res.status(201).json(createComment);
+    } else {
+        res.status(400).json({ message: "Commentaire vide" })
+    }
 }
 
 exports.getAllCommentsOfAPost = async (req, res) => {

@@ -27,7 +27,8 @@
                                         v-model="content"
                                         placeholder="Écrivez votre commentaire..."
                                         rows="4"
-                                    ></b-form-textarea>
+                                        required>
+                                    </b-form-textarea>
                                     <b-row align-h="end" class="mt-3">
                                         <b-button 
                                             size="sm" 

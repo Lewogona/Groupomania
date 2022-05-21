@@ -3,15 +3,22 @@ const Post = db.posts;
 const User = db.users;
 
 exports.createPost = async (req, res) => {
-    let post = {
-        title: req.body.title,
-        content: req.body.content,
-        date: req.body.date,
-        userId: req.auth.userId,
-        lastcommented: null
-    };
-    const createPost = await Post.create(post);
-    res.status(201).json(createPost);
+    if (req.body.title && req.body.content) {
+        let post = {
+            title: req.body.title,
+            content: req.body.content,
+            date: req.body.date,
+            userId: req.auth.userId,
+            lastcommented: null
+        };
+        const createPost = await Post.create(post);
+        res.status(201).json(createPost);
+    }
+    if (!req.body.title) {
+        res.status(400).json({ message: "Titre manquant"})
+    } else if (!req.body.content) {
+        res.status(400).json({ message: "Post vide" })
+    }
 }
 
 exports.getAllPosts = async (req, res) => {
