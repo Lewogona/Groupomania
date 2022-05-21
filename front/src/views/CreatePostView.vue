@@ -1,5 +1,5 @@
 <template>
-    <CreatePost :email="currentUser.email" date="Aujourd'hui"/>
+    <CreatePost :email="currentUser.email" date="aujourd'hui"/>
 </template>
 
 <script>

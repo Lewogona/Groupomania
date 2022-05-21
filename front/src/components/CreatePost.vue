@@ -23,9 +23,9 @@
                             color="var(--info)"
                             class="mx-auto"></avatar>
                         <div class="my-3">
-                            <b-card-text>Posté par : </b-card-text>
-                            <b-card-text>{{ email }}</b-card-text>
-                            <b-card-text>{{ date }}</b-card-text>
+                            <b-card-text>Posté par</b-card-text>
+                            <b-card-text>{{ email }},</b-card-text>
+                            <b-card-text>{{ date }}.</b-card-text>
                         </div>
                     </b-col>
                     <b-col md="9" lg="10">

@@ -16,7 +16,7 @@
         <CreateComment 
             v-if="showCreateComment" 
             :email="currentUser.email" 
-            date="Aujourd'hui" 
+            date="aujourd'hui" 
             :displayCreateComment="displayCreateComment"
             :displayNewComment="displayNewComment"/>
         <PublishedComment 
