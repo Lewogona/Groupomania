@@ -31,17 +31,17 @@
         </b-row>
         <template #footer>
             <b-row align-h="between">
-                <b-col cols="1" lg="2" class="col-footer my-auto">
+                <b-col cols="3" lg="2" class="col-footer my-auto">
                     <b-icon-hand-thumbs-up></b-icon-hand-thumbs-up> {{ likes }}
                 </b-col>
-                <b-col cols="6" lg="3" class="text-center">
+                <b-col cols="5" lg="3" class="text-center">
                     <b-button
                         pill
                         variant="info" 
                         size="sm" 
                         v-if="displayPostButton" 
                         @click="displayPost">
-                        <b-icon-keyboard></b-icon-keyboard> {{ commentButton }}
+                        <b-icon-keyboard></b-icon-keyboard><span class="hide-on-phone"> {{ commentButton }}</span>
                     </b-button>
                     <b-button
                         pill
@@ -49,17 +49,17 @@
                         size="sm" 
                         v-else 
                         @click="displayCreateComment">
-                        <b-icon-keyboard></b-icon-keyboard> {{ commentButton }}
+                        <b-icon-keyboard></b-icon-keyboard><span class="hide-on-phone"> {{ commentButton }}</span>
                     </b-button>
                 </b-col>
-                <b-col cols="5" lg="3" class="text-right">
+                <b-col cols="4" lg="3" class="text-right">
                     <b-button 
                         pill
                         variant="info"
                         size="sm" 
                         @click="deletePost(id)"
                         v-if="currentUser.id === postUserId || currentUser.isAdmin">
-                            <b-icon-trash></b-icon-trash> Supprimer
+                            <b-icon-trash></b-icon-trash><span class="hide-on-phone"> Supprimer</span>
                     </b-button>
                 </b-col>
             </b-row>

@@ -84,4 +84,10 @@ $card-border-color: grey;
         display: none;
     }
 }
+
+.hide-on-phone {
+    @include media-breakpoint-down(xs) {
+        display: none;
+    }
+}
 </style>

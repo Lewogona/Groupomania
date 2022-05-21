@@ -33,7 +33,7 @@
                             size="sm" 
                             @click="deleteComment(id)" 
                             v-if="currentUser.id === commentUserId || currentUser.isAdmin">
-                                <b-icon-trash></b-icon-trash> Supprimer
+                                <b-icon-trash></b-icon-trash><span class="hide-on-phone"> Supprimer</span>
                         </b-button>
                     </b-card-body>
                 </b-row>
@@ -84,5 +84,4 @@ export default {
 #minimum {
     min-height: 50px;
 }
-
 </style>
