@@ -1,6 +1,6 @@
 <template>
     <span>
-        <span v-if="lastName">{{firstName}} {{slicedLastName}}</span>
+        <span v-if="lastName">{{firstName}} {{slicedLastName}}.</span>
         <span v-else>Ancien Utilisateur</span>
     </span>
 </template>

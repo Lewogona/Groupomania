@@ -94,11 +94,13 @@ exports.deleteUser = async (req, res) => {
         where: { id: req.params.id },
     });
     if (user) {
-        if (req.user.dataValues.isAdmin || req.auth.userId === req.user.dataValues.id) {
+        if (req.user.isAdmin || req.user.id === user.id) {
             await user.destroy();
+            res.status(200).json({ message: "User deleted" })
         } else {
             res.status(401).json({ message: "Unauthorized delete" })
         }
+    } else {
+        res.status(404).json({ message: "User not found" })
     }
-    res.status(200).json({ message: "User deleted" })
 }

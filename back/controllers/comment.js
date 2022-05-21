@@ -28,11 +28,13 @@ exports.deleteComment = async (req, res) => {
         where: { id: req.params.id },
     });
     if (comment) {
-        if (req.user.dataValues.isAdmin || req.auth.userId === req.user.dataValues.id) {
+        if (req.user.isAdmin || req.user.id.toString() === comment.userId) {
             await comment.destroy();
+            res.status(200).json({ message: "Comment deleted" })
         } else {
-            res.status(401).json({ message: "Unauthorized delete" })
+            res.status(401).json({ message: "Unauthorized delete" });
         }
+    } else {
+        res.status(404).json({ message: "Comment not found" });
     }
-    res.status(200).json({ message: "Comment deleted" })
 }
