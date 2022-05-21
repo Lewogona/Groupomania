@@ -64,4 +64,12 @@ const router = new VueRouter({
     routes
 })
 
+const DEFAULT_TITLE = 'Groupomania Social Network';
+
+router.afterEach(() => {
+    Vue.nextTick(() => {
+        document.title = DEFAULT_TITLE;
+    });
+});
+
 export default router

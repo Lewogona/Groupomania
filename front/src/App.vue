@@ -14,6 +14,10 @@ export default {
     components: {
         HeaderForPages,
     },
+    created() {
+        const html = document.documentElement
+        html.setAttribute('lang', 'fr')
+    },
     computed: {
         showHeader() {
             return !(this.$route.path === "/login" || this.$route.path === "/signup")
@@ -30,6 +34,7 @@ $danger: #B40000;
 $info: #112341;
 $blue: #c8dffc;
 $body-bg: rgb(245, 245, 245);
+$link-color: $danger;
 $card-border-color: grey;
 
 @import '../node_modules/bootstrap/scss/bootstrap';
