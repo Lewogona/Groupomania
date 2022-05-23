@@ -1,5 +1,13 @@
 <template>
     <div>
+        <div class="title">
+            <h1>
+                Les dernières participations
+            </h1>
+            <h2>
+                Nouveaux posts ou nouveaux commentaires...
+            </h2>
+        </div>
         <PublishedPost 
             commentButton="Voir le fil"
             v-for="post in posts"
@@ -58,3 +66,22 @@ export default {
 }
 
 </script>
+
+<style scoped lang="scss">
+h1 {
+    font-size: 28px;
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    text-align: center;
+}
+
+.title {
+    width: 50%;
+    margin: auto;
+}
+</style>
