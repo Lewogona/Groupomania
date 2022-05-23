@@ -4,8 +4,10 @@
             :email="user.email" 
             :isAdmin="user.isAdmin" 
             :firstName="user.firstName" 
+            :imageUrl="user.imageUrl" 
             :lastName="user.lastName" 
             :displayDeleteMessage="displayDeleteMessage"
+            :updateImageUrl="updateImageUrl"
             :userId="user.id"/>
         <b-modal 
             ref="confirm" 
@@ -49,12 +51,15 @@ export default {
         }
     },
     methods: {
+        updateImageUrl(imageUrl) {
+            this.user.imageUrl = imageUrl; // Not working
+            this.$router.go()
+        },
         displayDeleteMessage() {
             this.$refs["confirm"].toggle()
         },
         async deleteUser() {
-            const res = await axios.delete("users/" + this.$route.params.id);
-            console.log(res);
+            await axios.delete("users/" + this.$route.params.id);
             this.$store.dispatch('auth/logout');
             this.$router.push("/signup");
         }

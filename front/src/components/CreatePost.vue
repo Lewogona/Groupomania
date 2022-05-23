@@ -22,7 +22,8 @@
                             :size="150" 
                             :rounded="false" 
                             color="var(--info)"
-                            class="mx-auto"></avatar>
+                            class="mx-auto"
+                            :src="currentUser.imageUrl"></avatar>
                         <div class="my-3">
                             <b-card-text>Posté par</b-card-text>
                             <b-card-text>
@@ -46,11 +47,10 @@
                                 v-model="image" 
                                 placeholder="Ajouter une image" 
                                 class="mt-3"
-                                :state="Boolean(image)">
-                                <!-- drop-placeholder="Déposez votre image ici"
+                                :state="Boolean(image)"
+                                drop-placeholder="Déposez votre image ici"
                                 browse-text="Parcourir"
-                                accept=".jpg, .png, .gif"
-                                name="uploaded_file" -->
+                                accept=".jpg, .jpeg, .png, .gif">
                             </b-form-file>
                         </b-card-body> 
                     </b-col>

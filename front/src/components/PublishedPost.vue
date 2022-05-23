@@ -12,7 +12,8 @@
                     :size="150" 
                     :rounded="false" 
                     color="var(--info)"
-                    class="mx-auto"></avatar>
+                    class="mx-auto"
+                    :src="profileImageUrl"></avatar>
                 <div class="my-3">
                     <b-card-text>Posté par</b-card-text>
                     <b-card-text>
@@ -94,7 +95,8 @@ export default {
         id: Number,
         deletePost: Function,
         postUserId: Number,
-        imageUrl: String
+        imageUrl: String,
+        profileImageUrl: String
     },
     computed: {
         displayPostButton() {

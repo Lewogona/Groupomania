@@ -4,7 +4,6 @@ const User = db.users;
 const fs = require("fs");
 
 exports.createPost = async (req, res) => {
-    console.log(req.body, req.file);
     if (req.body.title && req.body.content) {
         let post = {
             title: req.body.title,

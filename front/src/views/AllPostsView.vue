@@ -22,7 +22,8 @@
             :key="post.id"
             :deletePost="deletePost"
             :postUserId="post.User && post.User.id"
-            :imageUrl="post.imageUrl"/>
+            :imageUrl="post.imageUrl"
+            :profileImageUrl="post.User && post.User.imageUrl"/>
     </div>
 </template>
 

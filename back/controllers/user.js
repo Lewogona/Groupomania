@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
+const fs = require('fs').promises;
 
 const db = require("../models");
 const User = db.users;
@@ -87,6 +88,23 @@ exports.getOneUser = async (req, res) => {
         where: { id: req.params.id },
     });
     res.status(200).json(user);
+}
+
+exports.modifyProfile = async (req, res) => {
+    const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+    if (req.user.isAdmin || req.user.id.toString() === req.params.id.toString()) {
+        const user = await User.findOne({ where: { id: req.params.id } });
+        if (user.imageUrl) {
+            try {
+                await fs.unlink(`images/${user.imageUrl.split("/images/")[1]}`);
+            } catch (e) { console.error(e); }
+        }
+        user.update({ imageUrl });
+        await user.save();
+        res.status(200).json({ imageUrl });
+    } else {
+        res.status(401).json({ message: "Unauthorized update" })
+    }
 }
 
 exports.deleteUser = async (req, res) => {

@@ -10,7 +10,8 @@
                             :size="100" 
                             :rounded="false" 
                             color="var(--info)"
-                            class="mx-auto"></avatar>
+                            class="mx-auto"
+                            :src="imageUrl"></avatar>
                         <div class="my-1">
                             <b-card-text>Réponse de</b-card-text>
                             <b-card-text>
@@ -54,6 +55,7 @@ export default {
         firstName: String,
         lastName: String,
         email: String,
+        imageUrl: String,
         date: String,
         content: String,
         id: Number,
