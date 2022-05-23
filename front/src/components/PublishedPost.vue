@@ -23,6 +23,9 @@
             </b-col>
             <b-col md="9" lg="10">
                 <b-card-body>
+                    <div class="image mx-auto" v-if="imageUrl">
+                        <b-img :src="imageUrl" fluid class="contain"></b-img>
+                    </div>
                     <b-card-text>
                         {{ content }}
                     </b-card-text>
@@ -70,10 +73,13 @@
 <script>
 import Avatar from "vue-avatar"
 
+// import PostImage from "./PostImage.vue"
+
 export default {
     name: 'PublishedPost',
     components: {
-        Avatar
+        Avatar,
+        // PostImage
     },
     props: {
         firstName: String,
@@ -87,7 +93,8 @@ export default {
         commentButton: String,
         id: Number,
         deletePost: Function,
-        postUserId: Number
+        postUserId: Number,
+        imageUrl: String
     },
     computed: {
         displayPostButton() {
@@ -107,5 +114,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.contain {
+    object-fit: cover;
+}
 
+.image {
+    max-width: 200px;
+}
 </style>

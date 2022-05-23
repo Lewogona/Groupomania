@@ -12,7 +12,8 @@
             :id="post.id"
             :displayCreateComment="displayCreateComment"
             :deletePost="deletePost"
-            :postUserId="post.User && post.User.id"/>
+            :postUserId="post.User && post.User.id"
+            :imageUrl="post.imageUrl"/>
         <CreateComment 
             v-if="showCreateComment" 
             :email="currentUser.email" 

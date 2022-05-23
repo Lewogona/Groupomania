@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
         content: DataTypes.STRING,
         date: DataTypes.DATE,
         userId: DataTypes.UUID,
-        lastCommentedAt: DataTypes.DATE
+        lastCommentedAt: DataTypes.DATE,
+        imageUrl: DataTypes.STRING
     }, {
         sequelize,
         modelName: 'post',

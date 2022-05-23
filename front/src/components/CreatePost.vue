@@ -42,7 +42,17 @@
                                     required>
                                 </b-form-textarea>
                             </b-card-text>
-                        </b-card-body>
+                            <b-form-file 
+                                v-model="image" 
+                                placeholder="Ajouter une image" 
+                                class="mt-3"
+                                :state="Boolean(image)">
+                                <!-- drop-placeholder="Déposez votre image ici"
+                                browse-text="Parcourir"
+                                accept=".jpg, .png, .gif"
+                                name="uploaded_file" -->
+                            </b-form-file>
+                        </b-card-body> 
                     </b-col>
                 </b-row>
                 <template #footer>
@@ -72,6 +82,7 @@ export default {
         return {
             title: "",
             content: "",
+            image: null
         }
     },
     computed: {
@@ -85,7 +96,12 @@ export default {
             await axios.post("posts", {
                 title: this.title,
                 content: this.content,
-                date
+                date,
+                image: this.image
+            }, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
             this.$router.push("/allposts");
         }

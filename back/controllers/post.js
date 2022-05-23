@@ -3,13 +3,15 @@ const Post = db.posts;
 const User = db.users;
 
 exports.createPost = async (req, res) => {
+    console.log(req.body, req.file);
     if (req.body.title && req.body.content) {
         let post = {
             title: req.body.title,
             content: req.body.content,
             date: req.body.date,
             userId: req.auth.userId,
-            lastcommented: null
+            lastCommentedAt: null,
+            imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
         };
         const createPost = await Post.create(post);
         res.status(201).json(createPost);
