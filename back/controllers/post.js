@@ -1,6 +1,7 @@
 const db = require("../models");
 const Post = db.posts;
 const User = db.users;
+const fs = require("fs");
 
 exports.createPost = async (req, res) => {
     console.log(req.body, req.file);
@@ -53,8 +54,11 @@ exports.deletePost = async (req, res) => {
     });
     if (post) {
         if (req.user.isAdmin || req.user.id.toString() === post.userId) {
-            await post.destroy();
-            res.status(200).json({ message: "Post deleted" })
+            const filename = post.imageUrl.split("/images/")[1];
+            fs.unlink(`images/${filename}`, async () => { 
+                await post.destroy();
+                res.status(200).json({ message: "Post deleted" })
+            })
         } else {
             res.status(401).json({ message: "Unauthorized delete" })
         }
