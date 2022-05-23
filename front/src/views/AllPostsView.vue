@@ -13,7 +13,8 @@
             :id="post.id"
             :key="post.id"
             :deletePost="deletePost"
-            :postUserId="post.User && post.User.id"/>
+            :postUserId="post.User && post.User.id"
+            :imageUrl="post.imageUrl"/>
     </div>
 </template>
 
