@@ -21,6 +21,8 @@ Functionalities :
 - You can delete your account, your post and your comment.
 - If you are an admin, you can delete any account, any post and any comment. The admin has access to a hidden page where all the users are listed. They can delete an account through this page.
 
+![all users link](https://github.com/Lewogona/Groupomania/blob/main/front/src/assets/allusers.png)
+
 ## Annexe
 
 This is my version of the project 7 of the web developper formation from OpenClassrooms. 
