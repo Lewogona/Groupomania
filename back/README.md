@@ -57,14 +57,17 @@ Follow this [tutorial (fr)](https://openclassrooms.com/fr/courses/6971126-implem
 
 ## Create your .env file
 
-Create your .env file in the back folder. If you intend to publish your project in GitHub, don't forget to add your .env file in your .gitignore.
+Create your .env file in the back folder. If you intend to publish this project in GitHub, don't forget to add your .env file in your .gitignore.
 
 In your .env file, add :
 ```
-SECRET=putyourownstring
-MYSQL_USERNAME=putyoursqlusername
-MYSQL_PASSWORD=putyoursqlpassword
-MYSQL_DATABASE=putyoursqldatabasename
+SECRET=putYourOwnString
+MYSQL_USERNAME=putYourSQLusername
+MYSQL_PASSWORD=putYourSQLpassword
+MYSQL_DATABASE=putYourSQLdatabaseName
 MYSQL_HOST=localhost
 ```
 
+## Migrate the models into your database
+
+In your terminal, run `npx sequelize-cli db:migrate`
