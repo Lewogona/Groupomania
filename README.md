@@ -5,7 +5,7 @@
 Groupomania is a large distribution group that wants to build an intern social network. The goal here is to open the exchange between employees and improve their work environment. They want to have the possibility to post text (as you do in reddit for example), but also images (like in 9gag).
 
 To navigate in the forum, you have to be logged in. If the user is not connected, they can reach the login page or the signup page. To sign up :
-![sign up page](https://github.com/Lewogona/Groupomania/blob/main/front/src/assets/signuppage.png)
+![sign up page](https://github.com/Lewogona/Groupomania/blob/main/front/src/assets/signUpPage.png)
 
 
 Once you are logged in, you can reach differents pages :
