@@ -12,7 +12,7 @@ To navigate in the forum, you have to be logged in. If the user is not connected
 
 Once you are logged in, you can reach differents pages :
 - All posts page, where you can see all the posts of the forum from the newest to the oldest.
-- Last participations posts, where you can see all the posts but the order include the last commented post as well. So if someone just commented on a post that was created a few times ago, you'll see the post on the top of that page. 
+- Last participations posts, where you can see all the posts but the order includes the last commented post as well. So if someone just commented on a post that was created a few times ago, you'll see the post on the top of that page. 
 - The post page, where you'll see the post with all its comments. The user can comment as well through this page.
 - A profile page, with all the user's info. Through this page, the user can change their profile picture or delete their account. 
 - The create post page, where the user can create a new post (text required, possibility to add an image) and publish it.
