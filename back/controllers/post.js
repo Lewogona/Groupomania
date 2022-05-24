@@ -1,8 +1,9 @@
+const fs = require("fs").promises;
 const db = require("../models");
 const Post = db.posts;
 const User = db.users;
-const fs = require("fs");
 
+// Create a new post and send it to the database
 exports.createPost = async (req, res) => {
     if (req.body.title && req.body.content) {
         let post = {
@@ -23,6 +24,8 @@ exports.createPost = async (req, res) => {
     }
 }
 
+
+// Get all posts from the newest to the oldest 
 exports.getAllPosts = async (req, res) => {
     const posts = await Post.findAll({
         include: User,
@@ -31,6 +34,7 @@ exports.getAllPosts = async (req, res) => {
     res.status(200).json(posts);
 }
 
+// Get all posts from the newest participations (new comment and/or new post)
 exports.getAllPostsByLastParticipations = async (req, res) => {
     const posts = await Post.findAll({
         include: User,
@@ -39,6 +43,7 @@ exports.getAllPostsByLastParticipations = async (req, res) => {
     res.status(200).json(posts);
 }
 
+// Get one post with the post id
 exports.getOnePost = async (req, res) => {
     const post = await Post.findOne({
         where: { id: req.params.id },
@@ -47,21 +52,24 @@ exports.getOnePost = async (req, res) => {
     res.status(200).json(post);
 }
 
+// Delete a post if you are an admin or the user who created the post
 exports.deletePost = async (req, res) => {
     const post = await Post.findOne({
         where: { id: req.params.id },
     });
     if (post) {
         if (req.user.isAdmin || req.user.id.toString() === post.userId) {
-            const filename = post.imageUrl.split("/images/")[1];
-            fs.unlink(`images/${filename}`, async () => { 
-                await post.destroy();
-                res.status(200).json({ message: "Post deleted" })
-            })
+            // If there is an image in the post, delete the image as well
+            if (post.imageUrl) {
+                const filename = post.imageUrl.split("/images/")[1];
+                await fs.unlink(`images/${filename}`);
+            }
+            await post.destroy();
+            res.status(200).json({ message: "Post supprimé" })
         } else {
-            res.status(401).json({ message: "Unauthorized delete" })
+            res.status(401).json({ message: "Suppression non autorisée" })
         }
     } else {
-        res.status(404).json({ message: "Post not found" })
+        res.status(404).json({ message: "Post non trouvé" })
     }
 }

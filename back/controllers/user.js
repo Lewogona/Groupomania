@@ -6,6 +6,7 @@ const fs = require('fs').promises;
 const db = require("../models");
 const User = db.users;
 
+// Create a new user and send it to the database
 exports.signup = async (req, res) => {
     let usr = null;
     try {
@@ -27,13 +28,14 @@ exports.signup = async (req, res) => {
             const created_user = await User.create(usr);
             res.status(201).json(created_user);
         } else {
-            res.status(400).json({ error: "At least one of the field is not valid" })
+            res.status(400).json({ error: "Au moins un des champs n'est pas valide" })
         }
     } else {
         res.status(400).json({ error: "Utilisateur déjà existant" })
     }
 };
 
+// Check if every input is valid
 function validateForm(usr) {
     const validateEmail = validateInput(usr.email, /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
     const validateFirstName = validateInput(usr.firstName, /^[A-zÀ-ú- ]+$/);
@@ -43,6 +45,7 @@ function validateForm(usr) {
     return validateEmail && validateFirstName && validateLastName && validatePassword
 }
 
+// Check each input with regex
 function validateInput(element, regex) {
     element = element.trim();
     let match = element.match(regex)
@@ -53,6 +56,7 @@ function validateInput(element, regex) {
     return true;
 }
 
+// Find if user exists, then create an authentication token
 exports.login = async (req, res) => {
     let user = null;
     try {
@@ -74,6 +78,7 @@ exports.login = async (req, res) => {
     }
 };
 
+// Get all users
 exports.getAllUsers = async (req, res) => {
     const users = await User.findAll()
     if (req.user.isAdmin) {
@@ -83,6 +88,7 @@ exports.getAllUsers = async (req, res) => {
     }
 }
 
+// Get one user with the user id
 exports.getOneUser = async (req, res) => {
     const user = await User.findOne({
         where: { id: req.params.id },
@@ -90,6 +96,7 @@ exports.getOneUser = async (req, res) => {
     res.status(200).json(user);
 }
 
+// Add or change a profile picture
 exports.modifyProfile = async (req, res) => {
     const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
     if (req.user.isAdmin || req.user.id.toString() === req.params.id.toString()) {
@@ -103,10 +110,11 @@ exports.modifyProfile = async (req, res) => {
         await user.save();
         res.status(200).json({ imageUrl });
     } else {
-        res.status(401).json({ message: "Unauthorized update" })
+        res.status(401).json({ message: "Mise à jour non autorisée" })
     }
 }
 
+// Delete an user if you are an admin or the user themself
 exports.deleteUser = async (req, res) => {
     const user = await User.findOne({
         where: { id: req.params.id },
@@ -114,11 +122,11 @@ exports.deleteUser = async (req, res) => {
     if (user) {
         if (req.user.isAdmin || req.user.id === user.id) {
             await user.destroy();
-            res.status(200).json({ message: "User deleted" })
+            res.status(200).json({ message: "Utilisateur supprimé" })
         } else {
-            res.status(401).json({ message: "Unauthorized delete" })
+            res.status(401).json({ message: "Suppression non autorisée" })
         }
     } else {
-        res.status(404).json({ message: "User not found" })
+        res.status(404).json({ message: "Utilisateur non trouvé" })
     }
 }

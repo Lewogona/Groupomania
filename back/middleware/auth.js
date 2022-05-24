@@ -4,6 +4,7 @@ require('dotenv').config();
 const db = require("../models");
 const User = db.users;
 
+// Check if the token is valid and retrieve all user info
 module.exports = async (req, res, next) => {
     try {
         const token = req.headers['authorization'];

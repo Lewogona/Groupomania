@@ -3,6 +3,7 @@ const Comment = db.comments;
 const User = db.users;
 const Post = db.posts;
 
+// Create a new comment and send it to the database
 exports.createComment = async (req, res) => {
     if(req.body.content) {
         let comment = {
@@ -19,6 +20,7 @@ exports.createComment = async (req, res) => {
     }
 }
 
+// Get all comments of one post with the post id
 exports.getAllCommentsOfAPost = async (req, res) => {
     const comments = await Comment.findAll({
         where: { postId: req.params.id },
@@ -27,6 +29,7 @@ exports.getAllCommentsOfAPost = async (req, res) => {
     res.status(200).json(comments);
 }
 
+// Delete a comment if you are an admin or the user who created the comment
 exports.deleteComment = async (req, res) => {
     const comment = await Comment.findOne({
         where: { id: req.params.id },
@@ -34,11 +37,11 @@ exports.deleteComment = async (req, res) => {
     if (comment) {
         if (req.user.isAdmin || req.user.id.toString() === comment.userId) {
             await comment.destroy();
-            res.status(200).json({ message: "Comment deleted" })
+            res.status(200).json({ message: "Commentaire supprimé" })
         } else {
-            res.status(401).json({ message: "Unauthorized delete" });
+            res.status(401).json({ message: "Suppression non autorisée" });
         }
     } else {
-        res.status(404).json({ message: "Comment not found" });
+        res.status(404).json({ message: "Commentaire non trouvé" });
     }
 }
