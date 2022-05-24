@@ -1,12 +1,19 @@
 import axios from "axios"
 
+// Add baseURL to avoid repetition
 const axiosInstance = axios.create({
     baseURL: "http://localhost:3000/",
     params: {}
 });
 
+// Add middleware between client and API request to add a token
 axiosInstance.interceptors.request.use((config) => {
-    if (!localStorage.getItem('user')) return config;
+    // If there is no user in localStorage, and continue the request
+    if (!localStorage.getItem('user')) {
+        return config; 
+    }
+
+    // If user exists in localStorage, add token in the request header
     const user = JSON.parse(localStorage.getItem('user'));
     if (user && user.token) {
         config.headers.authorization = user.token;
@@ -14,11 +21,15 @@ axiosInstance.interceptors.request.use((config) => {
     return config
 }, (error) => Promise.reject(error))
 
-axiosInstance.interceptors.response.use(function (response) {
-    return response;
-}, function (error) {
+// Add middleware between API and client response
+axiosInstance.interceptors.response.use((response) => response, (error) => {
+    // If there is a 401 error
     if (error.response.status === 401) {
-        if (localStorage.getItem('user')) localStorage.removeItem('user');
+        // and there is an user in localStorage, remove them
+        if (localStorage.getItem('user')) {
+            localStorage.removeItem('user');
+        }
+        // Redirect to the login page
         document.location.href = '#/login';
     }
     return Promise.reject(error);
