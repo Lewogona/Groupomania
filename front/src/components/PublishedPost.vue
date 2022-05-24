@@ -74,13 +74,10 @@
 <script>
 import Avatar from "vue-avatar"
 
-// import PostImage from "./PostImage.vue"
-
 export default {
     name: 'PublishedPost',
     components: {
-        Avatar,
-        // PostImage
+        Avatar
     },
     props: {
         firstName: String,
@@ -99,20 +96,22 @@ export default {
         profileImageUrl: String
     },
     computed: {
+        // Show the button that opens the post page
         displayPostButton() {
             return ["/allposts", "/lastparticipations"].includes(this.$router.currentRoute.path)
         },
+        // Retrieve the user with their info
         currentUser() {
             return this.$store.state.auth.user;
         }
     },
     methods: {
+        // Redirect to the post page
         displayPost() {
             this.$router.push(`/post/${this.id}`)
         }
     }
 }
-
 </script>
 
 <style scoped lang="scss">

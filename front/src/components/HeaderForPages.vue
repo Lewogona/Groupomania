@@ -32,29 +32,28 @@
 </template>
 
 <script>
-
 export default {
     name: 'HeaderForPages',
     props: {
         isAdmin: Boolean
     },
     computed: {
+        // Retrieve the user with their info
         currentUser() {
             return this.$store.state.auth.user;
         }
     },
     methods: {
+        // log out and redirect to the login page
         logOut() {
             this.$store.dispatch('auth/logout');
             this.$router.push('/login');
         }
     }
 }
-
 </script>
 
 <style scoped lang="scss">
-
 .icon img {
     width: 100%;
 }
@@ -62,5 +61,4 @@ export default {
 .navbar-brand {
     padding: 0px;
 }
-
 </style>

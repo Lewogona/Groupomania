@@ -56,7 +56,6 @@
 </template>
 
 <script>
-
 import axios from "../services/axios-service"
 import Avatar from "vue-avatar"
 
@@ -77,11 +76,13 @@ export default {
         }
     },
     computed: {
+        // Retrieve the user with their info
         currentUser() {
             return this.$store.state.auth.user;
         }
     },
     methods: {
+        // Send new comment to the database with user content and new date
         async sendComment() {
             const date = new Date();
             const res = await axios.post("comments/post/" + this.$route.params.id, {
@@ -94,11 +95,9 @@ export default {
         }
     }
 }
-
 </script>
 
 <style scoped lang="scss">
-
 #comment-animation {
     position: relative;
     top: -10px;

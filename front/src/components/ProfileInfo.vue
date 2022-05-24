@@ -64,11 +64,13 @@ export default {
         }
     },
     computed: {
+        // Retrieve the user with their info
         currentUser() {
             return this.$store.state.auth.user;
         }
     },
     methods: {
+        // send an image and update the user imageUrl in database
         async onChangeFile() {
             this.image = this.$refs.fileRef.files[0];
             if (this.image) {
@@ -82,12 +84,12 @@ export default {
                 this.updateImageUrl(res.data.imageUrl);
             }
         },
+        // Open the file input when user click on the image instead of the original input
         openFileInput() {
             this.$refs.fileRef.click()
         }
     }
 }
-
 </script>
 
 <style scoped lang="scss">

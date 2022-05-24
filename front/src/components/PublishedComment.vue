@@ -63,16 +63,15 @@ export default {
         commentUserId: Number
     },    
     computed: {
+        // Retrieve the user with their info
         currentUser() {
             return this.$store.state.auth.user;
         }
     }
 }
-
 </script>
 
 <style scoped lang="scss">
-
 #relative {
     position: relative;
 }

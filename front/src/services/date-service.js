@@ -1,3 +1,4 @@
+// Create a date in DD/MM/YYYY HH:MM format
 exports.getReadableDate = (ISOStringDate) => {
     const date = new Date(ISOStringDate);
     const year = date.getFullYear();

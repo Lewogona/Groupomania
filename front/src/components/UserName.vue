@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'UserName',
     props: {
@@ -14,6 +13,7 @@ export default {
         lastName: String
     },
     computed: {
+        // Use the first two letters of a name
         slicedLastName() {
             return this.lastName.slice(0,2);
         }

@@ -29,7 +29,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'UsersInfo',
     props: {
@@ -40,10 +39,10 @@ export default {
         userId: Number
     },
     computed: {
+        // Retrieve the user with their info
         currentUser() {
             return this.$store.state.auth.user;
         }
     }
 }
-
 </script>

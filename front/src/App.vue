@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 import HeaderForPages from "./components/HeaderForPages.vue"
 
 export default {
@@ -27,7 +26,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 $primary: #FD2D01;
 $secondary: #FFD7D7;
 $danger: #B40000;

@@ -86,11 +86,13 @@ export default {
         }
     },
     computed: {
+        // Retrieve the user with their info
         currentUser() {
             return this.$store.state.auth.user;
         }
     },
     methods: {
+        // Send new post to the database with all necessary info
         async sendPost() {
             const date = new Date();
             await axios.post("posts", {
@@ -103,13 +105,9 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
             });
+            // Redirection to the allposts page to see the new post
             this.$router.push("/allposts");
         }
     }
 }
-
 </script>
-
-<style scoped lang="scss">
-
-</style>
