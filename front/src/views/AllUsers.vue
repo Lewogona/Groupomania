@@ -19,7 +19,6 @@
 </template>
 
 <script>
-
 import axios from "../services/axios-service"
 
 import UsersInfo from "@/components/UsersInfo.vue"
@@ -35,30 +34,34 @@ export default {
             userIdToDelete: null
         }
     },    
-        created() {
+    created() {
+        // Get all users
         axios.get("users/")
             .then(response => {
                 this.users.push(...response.data)
             })
     },
     mounted() {
+        // The user has to be logged in to access this page
         if (!this.currentUser) {
             this.$router.push('/login');
         }
     },
     computed: {
+        // Retrieve the user with their info
         currentUser() {
             return this.$store.state.auth.user;
         }
     },
     methods: {
+        // Display the confirmation modal
         displayDeleteMessage(userId) {
             this.userIdToDelete = userId;
             this.$refs["confirm"].toggle()
         },
+        // Delete a user using their id
         async deleteUser() {
-            const res = await axios.delete("users/" + this.userIdToDelete);
-            console.log(res);
+            await axios.delete("users/" + this.userIdToDelete);
             this.users = this.users.filter((user) => {
                 return user.id !== this.userIdToDelete;
             })

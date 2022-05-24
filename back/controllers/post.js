@@ -43,7 +43,7 @@ exports.getAllPostsByLastParticipations = async (req, res) => {
     res.status(200).json(posts);
 }
 
-// Get one post with the post id
+// Get one post using its id
 exports.getOnePost = async (req, res) => {
     const post = await Post.findOne({
         where: { id: req.params.id },

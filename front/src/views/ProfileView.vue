@@ -35,6 +35,7 @@ export default {
         }
     },    
     created() {
+        // Get a user using its id
         axios.get("users/" + this.$route.params.id)
             .then(response => {
                 this.user = response.data;
@@ -46,18 +47,22 @@ export default {
         }
     },
     computed: {
+        // Retrieve the user with their info
         currentUser() {
             return this.$store.state.auth.user;
         }
     },
     methods: {
+        // update the user imageUrl and refresh
         updateImageUrl(imageUrl) {
-            this.user.imageUrl = imageUrl; // Not working
+            this.$store.state.auth.user.imageUrl = imageUrl;
             this.$router.go()
         },
+        // Display the confirmation modal
         displayDeleteMessage() {
             this.$refs["confirm"].toggle()
         },
+        // Delete a user using their id and redirect to signup page after clearing the localStorage
         async deleteUser() {
             await axios.delete("users/" + this.$route.params.id);
             this.$store.dispatch('auth/logout');

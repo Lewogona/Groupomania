@@ -46,6 +46,7 @@ export default {
         }
     },
     methods: {
+        // Check if the user's email and password are valid
         async handleLogin() {
             if (this.user.email && this.user.password) {
                 try {

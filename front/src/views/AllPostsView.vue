@@ -29,10 +29,9 @@
 
 <script>
 import axios from "../services/axios-service"
-
-import PublishedPost from "@/components/PublishedPost.vue"
 import {getReadableDate} from "../services/date-service"
 
+import PublishedPost from "@/components/PublishedPost.vue"
 
 export default {
     name: "AllPostsView",
@@ -45,6 +44,7 @@ export default {
         }
     },
     created() {
+        // Get all posts and format the date
         axios.get("posts")
             .then(response => {
                 this.posts.push(...response.data.map(post => {
@@ -56,16 +56,15 @@ export default {
             });
     },
     methods: {
+        // Delete the post using its id
         async deletePost(id) {
-            const res = await axios.delete("posts/" + id);
-            console.log(res);
+            await axios.delete("posts/" + id);
             this.posts = this.posts.filter((post) => {
                 return post.id !== id;
             })
         }
     }
 }
-
 </script>
 
 <style scoped lang="scss">

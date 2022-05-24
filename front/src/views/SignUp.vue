@@ -62,6 +62,7 @@ export default {
         }
     },
     methods: {
+        // Check if every input is valid
         validateForm() {
             const validateEmail = this.validateInput("email", /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, "Adresse email");
             const validateFirstName = this.validateInput("firstName", /^[A-zÀ-ú- ]+$/, "Prénom");
@@ -70,6 +71,7 @@ export default {
 
             return validateEmail && validateFirstName && validateLastName && validatePassword
         },
+        // Check each input with regex
         validateInput(element, regex, fieldName) {
             this.user[element] = this.user[element].trim();
             let match = this.user[element].match(regex)
@@ -81,6 +83,7 @@ export default {
             this.error[element] = "";
             return true;
         },
+        // When the form is valided, redirect to the login page
         handleRegister() {
             if (this.validateForm()) {
                 this.$store.dispatch('auth/register', this.user).then(

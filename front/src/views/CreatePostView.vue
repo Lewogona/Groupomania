@@ -3,7 +3,6 @@
 </template>
 
 <script>
-
 import CreatePost from "@/components/CreatePost.vue"
 
 export default {
@@ -12,6 +11,7 @@ export default {
         CreatePost
     },
     computed: {
+        // Retrieve the user with their info
         currentUser() {
             return this.$store.state.auth.user;
         }

@@ -88,7 +88,7 @@ exports.getAllUsers = async (req, res) => {
     }
 }
 
-// Get one user with the user id
+// Get one user using their user id
 exports.getOneUser = async (req, res) => {
     const user = await User.findOne({
         where: { id: req.params.id },

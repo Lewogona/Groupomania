@@ -20,7 +20,7 @@ exports.createComment = async (req, res) => {
     }
 }
 
-// Get all comments of one post with the post id
+// Get all comments of one post using its id
 exports.getAllCommentsOfAPost = async (req, res) => {
     const comments = await Comment.findAll({
         where: { postId: req.params.id },
