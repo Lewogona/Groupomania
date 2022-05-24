@@ -2,7 +2,7 @@
 
 ## Description
 
-Groupomania is a large distribution group that wants to build an intern social network. The goal here is to open the exchange between employees and improve their work environment.
+Groupomania is a large distribution group that wants to build an intern social network. The goal here is to open the exchange between employees and improve their work environment. They want to have the possibility to post text (as you do in reddit for example), but also images (like in 9gag).
 
 ## Annexe
 
