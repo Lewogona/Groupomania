@@ -10,9 +10,11 @@ This project was created with :
 - [Multer](https://github.com/expressjs/multer)
 - [dotenv](https://www.npmjs.com/package/dotenv)
 
-## DATABASE
+## Install
 
-### Install
+Run `npm install` to install the dependencies. 
+
+### Database install
 
 Follow this [tutorial (fr)](https://openclassrooms.com/fr/courses/6971126-implementez-vos-bases-de-donnees-relationnelles-avec-sql/7152681-installez-le-sgbd-mysql) to install MySql
 
@@ -36,11 +38,6 @@ MYSQL_HOST=localhost
 ### Migrate the models into your database
 
 In your terminal, run `npx sequelize-cli db:migrate`
-
-
-## Install
-
-Run `npm install` to install the dependencies. 
 
 ### Run the app
 
