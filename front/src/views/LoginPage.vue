@@ -20,17 +20,10 @@
                 </b-form>
             </b-col>
         </b-row>
-        <b-row class="justify-content-center text-center">
-            <b-col cols="4">
-                
-            </b-col>
-        </b-row>            
-
     </div>
 </template>
 
 <script>
-
 import User from '../models/user';
 
 export default {
@@ -53,29 +46,16 @@ export default {
         }
     },
     methods: {
-        handleLogin() {
-            this.$validator.validateAll().then(isValid => {
-                if (!isValid) {
-                    this.loading = false;
-                    return;
+        async handleLogin() {
+            if (this.user.email && this.user.password) {
+                try {
+                    await this.$store.dispatch('auth/login', this.user);
+                    this.$router.push('/');
+                } catch (error) {
+                    this.messageError = error.response.data.error;
                 }
-                if (this.user.email && this.user.password) {
-                    this.$store.dispatch('auth/login', this.user).then(
-                        () => {
-                            this.$router.push('/');
-                        },
-                        error => {
-                            this.messageError = error.response.data.error;
-                        }
-                    );
-                }
-            });
+            } else this.messageError = "Email ou mot de passe manquant"
         }
     }
 }
-
 </script>
-
-<style scoped lang="scss">
-
-</style>

@@ -31,15 +31,10 @@
                 </b-form>
             </b-col>
         </b-row>
-        <b-row class="justify-content-center text-center">
-            <b-col cols="4">
-            </b-col>
-        </b-row>
     </div>
 </template>
 
 <script>
-
 import User from '../models/user';
 
 export default {
@@ -101,7 +96,3 @@ export default {
     }
 }
 </script>
-
-<style scoped lang="scss">
-
-</style>
