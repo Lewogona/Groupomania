@@ -22,7 +22,7 @@
                                 ref="fileRef"
                                 @change="onChangeFile"
                                 class="hidden"/>
-                                Photo de profil
+                                <p>Photo de profil</p>
                         </label>
                     </b-col>
                     <b-col md="7" lg="8" xl="9">
@@ -104,5 +104,9 @@ export default {
 
 .pointer {
     cursor: pointer;
+}
+
+label p {
+    display: none;
 }
 </style>
