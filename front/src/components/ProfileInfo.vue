@@ -15,10 +15,15 @@
                             class="mx-auto pointer"
                             :src="imageUrl">
                         </avatar>
-                        <input type="file"
-                            ref="fileRef"
-                            @change="onChangeFile"
-                            class="hidden"/>
+                        <label for="profile-picture">
+                            <input 
+                                id="profile-picture"
+                                type="file"
+                                ref="fileRef"
+                                @change="onChangeFile"
+                                class="hidden"/>
+                                Photo de profil
+                        </label>
                     </b-col>
                     <b-col md="7" lg="8" xl="9">
                         <b-card-text class="my-3">Prénom : {{ firstName }}</b-card-text>

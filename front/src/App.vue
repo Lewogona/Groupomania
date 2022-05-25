@@ -31,6 +31,7 @@ $secondary: #FFD7D7;
 $danger: #B40000;
 $info: #112341;
 $blue: #c8dffc;
+$green: #125F13;
 $body-bg: rgb(245, 245, 245);
 $link-color: $danger;
 $card-border-color: grey;
