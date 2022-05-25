@@ -12,7 +12,7 @@ exports.createPost = async (req, res) => {
             date: req.body.date,
             userId: req.auth.userId,
             lastCommentedAt: null,
-            imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+            imageUrl: req.file ? `${req.protocol}://${req.get("host")}/images/${req.file.filename}`: null
         };
         const createPost = await Post.create(post);
         res.status(201).json(createPost);
