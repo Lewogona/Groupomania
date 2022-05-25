@@ -121,6 +121,11 @@ exports.deleteUser = async (req, res) => {
     });
     if (user) {
         if (req.user.isAdmin || req.user.id === user.id) {
+            if (user.imageUrl) {
+                try {
+                    await fs.unlink(`images/${user.imageUrl.split("/images/")[1]}`);
+                } catch (e) { console.error(e); }
+            }
             await user.destroy();
             res.status(200).json({ message: "Utilisateur supprimé" })
         } else {
